@@ -33,6 +33,9 @@
       <button class="switch-btn" data-screen="profile">Profile</button>
     </div>
 
+    <!-- Fullscreen button (visible on mobile / PWA) -->
+    <button class="fullscreen-btn" id="fullscreenBtn" onclick="goFullscreen()">⛶ Tap for Fullscreen</button>
+
     <div class="phone-frame">
       <div class="phone-notch"></div>
       <div class="phone-screen">
@@ -1110,6 +1113,32 @@
   </div>
 
   <script src="app.js"></script>
+
+  <!-- Fullscreen + PWA detection -->
+  <script>
+    function goFullscreen() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if (el.msRequestFullscreen) el.msRequestFullscreen();
+      enterAppMode();
+    }
+
+    function enterAppMode() {
+      document.body.classList.add('app-mode');
+    }
+
+    // Auto-detect installed PWA
+    if (window.matchMedia('(display-mode: fullscreen)').matches ||
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true) {
+      enterAppMode();
+    }
+
+    document.addEventListener('fullscreenchange', function() {
+      if (document.fullscreenElement) enterAppMode();
+    });
+  </script>
 
   <!-- Service Worker Registration -->
   <script>

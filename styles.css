@@ -1856,3 +1856,77 @@ body {
     padding-bottom: env(safe-area-inset-bottom, 8px);
   }
 }
+
+/* ============================================
+   Fullscreen Button
+   ============================================ */
+.fullscreen-btn {
+  display: none;
+  width: 90%;
+  max-width: 360px;
+  padding: 14px 20px;
+  margin: 0 auto 12px;
+  border: 2px solid #C8102E;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #C8102E, #a00d24);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Show the button on mobile / small screens */
+@media (max-width: 600px) {
+  .fullscreen-btn {
+    display: block;
+  }
+}
+
+/* ============================================
+   App Mode — JS-toggled when fullscreen or PWA
+   ============================================ */
+body.app-mode {
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+body.app-mode .demo-title,
+body.app-mode .demo-subtitle,
+body.app-mode .phone-switcher,
+body.app-mode .phone-notch,
+body.app-mode .fullscreen-btn,
+body.app-mode .status-bar {
+  display: none !important;
+}
+
+body.app-mode .demo-container {
+  max-width: 100%;
+  height: 100vh;
+  height: 100dvh;
+}
+
+body.app-mode .phone-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  background: none;
+}
+
+body.app-mode .phone-screen {
+  border-radius: 0;
+  height: 100%;
+}
+
+body.app-mode .app-header {
+  padding-top: env(safe-area-inset-top, 12px);
+}
+
+body.app-mode .bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}
