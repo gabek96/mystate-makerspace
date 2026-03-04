@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mystate-makerspace-v3';
+const CACHE_NAME = 'mystate-makerspace-v4';
 const ASSETS = [
   './',
   './index.html',

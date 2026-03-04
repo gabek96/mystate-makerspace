@@ -1386,63 +1386,90 @@ body {
 }
 
 /* ============================================
-   MAKERSPACE LOCATION CARDS
+   SIC AREA CARDS (Makerspaces inside SIC)
    ============================================ */
-.ms-location-cards {
-  display: flex;
-  gap: 10px;
-  padding: 0 16px 16px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.ms-location-cards::-webkit-scrollbar {
-  display: none;
-}
-
-.ms-loc-card {
-  min-width: 150px;
-  flex-shrink: 0;
+.sic-area-card {
   background: #fff;
   border-radius: 14px;
-  padding: 14px 12px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
+  margin: 0 16px 10px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
-.ms-loc-card.active {
-  border-color: #C8102E;
-  background: #fff5f5;
+.sic-area-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.ms-loc-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+.sic-area-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 8px;
+  flex-shrink: 0;
 }
 
-.ms-loc-name {
-  font-size: 12px;
+.sic-area-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sic-area-name {
+  font-size: 14px;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 4px;
-  line-height: 1.2;
 }
 
-.ms-loc-status {
-  font-size: 10px;
-  color: #4CAF50;
+.sic-area-loc {
+  font-size: 11px;
+  color: #888;
+}
+
+.sic-area-avail {
+  font-size: 12px;
   font-weight: 600;
+  color: #666;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.sic-avail-count.available {
+  color: #4CAF50;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.sic-area-machines {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sic-machine-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.sic-machine-chip.available {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.sic-machine-chip.in-use {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.sic-machine-chip.maintenance {
+  background: #f5f5f5;
+  color: #999;
 }
 
 /* ============================================

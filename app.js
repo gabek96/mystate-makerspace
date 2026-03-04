@@ -48,14 +48,6 @@ document.querySelectorAll('.switch-btn').forEach(btn => {
   });
 });
 
-// Location filter buttons in Makerspace screen
-document.querySelectorAll('.loc-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.loc-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-
 // Popular Times day selector
 document.querySelectorAll('.pt-day').forEach(day => {
   day.addEventListener('click', () => {
@@ -80,13 +72,4 @@ function switchMsTab(btn) {
   const tabId = 'mstab-' + btn.dataset.mstab;
   const target = document.getElementById(tabId);
   if (target) target.classList.add('active');
-}
-
-// Makerspace location card selection
-function selectMakerspace(card) {
-  document.querySelectorAll('.ms-loc-card').forEach(c => c.classList.remove('active'));
-  card.classList.add('active');
-  const name = card.querySelector('.ms-loc-name').textContent;
-  const titleEl = document.getElementById('ms-selected-name');
-  if (titleEl) titleEl.textContent = name;
 }
