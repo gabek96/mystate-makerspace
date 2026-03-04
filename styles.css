@@ -1346,6 +1346,337 @@ body {
 }
 
 /* ============================================
+   MAKERSPACE INNER TABS
+   ============================================ */
+.ms-tabs {
+  display: flex;
+  gap: 0;
+  margin: 0 16px 12px;
+  background: #e8e8ec;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+.ms-tab {
+  flex: 1;
+  padding: 9px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #777;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.ms-tab.active {
+  background: #fff;
+  color: #C8102E;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+.ms-tab-content {
+  display: none;
+}
+
+.ms-tab-content.active {
+  display: block;
+}
+
+/* ============================================
+   MAKERSPACE LOCATION CARDS
+   ============================================ */
+.ms-location-cards {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ms-location-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.ms-loc-card {
+  min-width: 150px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.ms-loc-card.active {
+  border-color: #C8102E;
+  background: #fff5f5;
+}
+
+.ms-loc-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.ms-loc-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.ms-loc-status {
+  font-size: 10px;
+  color: #4CAF50;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* ============================================
+   UPCOMING RESERVATIONS & EVENTS
+   ============================================ */
+.upcoming-card {
+  padding: 4px 12px;
+}
+
+.upcoming-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.upcoming-item + .upcoming-item {
+  border-top: 1px solid #f0f0f0;
+}
+
+.upcoming-date-badge {
+  width: 44px;
+  height: 48px;
+  background: #C8102E;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.upcoming-date-badge.event-badge {
+  background: linear-gradient(135deg, #F1BE48, #c99a20);
+}
+
+.udb-month {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.udb-day {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.upcoming-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.upcoming-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.upcoming-detail {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.upcoming-time {
+  font-size: 11px;
+  color: #666;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.upcoming-status-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.upcoming-status-pill.confirmed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.upcoming-status-pill.pending-res {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.upcoming-rsvp-btn {
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #C8102E;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.upcoming-rsvp-btn:hover {
+  background: #a00d24;
+}
+
+/* ============================================
+   BADGES GRID
+   ============================================ */
+.badges-progress-card {
+  padding: 16px;
+}
+
+.badges-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e8e8ec;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.badges-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #81C784);
+  border-radius: 5px;
+  transition: width 0.4s;
+}
+
+.badges-progress-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.badge-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 8px 12px;
+  text-align: center;
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.badge-card.earned {
+  border-color: #4CAF50;
+}
+
+.badge-card.in-progress-badge {
+  border-color: #FF9800;
+}
+
+.badge-card.locked-badge {
+  opacity: 0.5;
+  border-color: #ccc;
+}
+
+.badge-icon-large {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C8102E, #a00d24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.badge-card.earned .badge-icon-large {
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+}
+
+.badge-card.in-progress-badge .badge-icon-large {
+  background: linear-gradient(135deg, #FF9800, #e65100);
+}
+
+.badge-card.locked-badge .badge-icon-large {
+  background: linear-gradient(135deg, #999, #666);
+}
+
+.badge-earned-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #4CAF50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-lock-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.badge-date {
+  font-size: 9px;
+  color: #888;
+  margin-top: 3px;
+}
+
+/* ============================================
    PUSH NOTIFICATION OVERLAY
    ============================================ */
 .notif-overlay {

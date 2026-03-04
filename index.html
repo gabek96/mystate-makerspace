@@ -456,369 +456,381 @@
           </div>
 
           <div class="scroll-content">
-            <!-- Location Selector -->
-            <div class="location-selector">
-              <button class="loc-btn active">All Locations</button>
-              <button class="loc-btn">Student Innovation</button>
-              <button class="loc-btn">Hoover</button>
-              <button class="loc-btn">Black Eng.</button>
-            </div>
-
-            <!-- Overall Status -->
-            <div class="makerspace-status-card">
-              <div class="status-header">
-                <div class="status-title">Student Innovation Center</div>
-                <div class="status-live"><span class="live-dot"></span>Live</div>
+            <!-- Location Picker (cards) -->
+            <div class="section-label">Choose a Makerspace</div>
+            <div class="ms-location-cards">
+              <div class="ms-loc-card active" data-loc="sic" onclick="selectMakerspace(this)">
+                <div class="ms-loc-icon" style="background: linear-gradient(135deg, #C8102E, #a00d24);">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+                </div>
+                <div class="ms-loc-name">Student Innovation Center</div>
+                <div class="ms-loc-status"><span class="live-dot"></span>Open · 12 machines</div>
               </div>
-              <div class="status-summary">
-                <div class="status-stat">
-                  <div class="stat-number available">12</div>
-                  <div class="stat-label">Available</div>
+              <div class="ms-loc-card" data-loc="hoover" onclick="selectMakerspace(this)">
+                <div class="ms-loc-icon" style="background: linear-gradient(135deg, #2196F3, #1565C0);">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
                 </div>
-                <div class="status-stat">
-                  <div class="stat-number in-use">8</div>
-                  <div class="stat-label">In Use</div>
-                </div>
-                <div class="status-stat">
-                  <div class="stat-number maintenance">2</div>
-                  <div class="stat-label">Maintenance</div>
-                </div>
+                <div class="ms-loc-name">Hoover Makerspace</div>
+                <div class="ms-loc-status"><span class="live-dot"></span>Open · 6 machines</div>
               </div>
-              <div class="hours-info">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#666"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                <span>Open today: 8:00 AM - 10:00 PM</span>
+              <div class="ms-loc-card" data-loc="black" onclick="selectMakerspace(this)">
+                <div class="ms-loc-icon" style="background: linear-gradient(135deg, #F1BE48, #c99a20);">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+                </div>
+                <div class="ms-loc-name">Black Engineering</div>
+                <div class="ms-loc-status open-status">Open · 4 machines</div>
               </div>
             </div>
 
-            <!-- Popular Times -->
-            <div class="section-label">Popular Times</div>
-            <div class="widget-card popular-times-card">
-              <div class="pt-day-selector">
-                <span class="pt-day">M</span>
-                <span class="pt-day">T</span>
-                <span class="pt-day active">W</span>
-                <span class="pt-day">Th</span>
-                <span class="pt-day">F</span>
-                <span class="pt-day">Sa</span>
-                <span class="pt-day dim">Su</span>
-              </div>
-              <div class="pt-chart">
-                <div class="pt-bar-col">
-                  <div class="pt-bar" style="height: 15%;"></div>
-                  <span class="pt-hour">8a</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar" style="height: 25%;"></div>
-                  <span class="pt-hour">9</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar busy" style="height: 65%;"></div>
-                  <span class="pt-hour">10</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar busy" style="height: 80%;"></div>
-                  <span class="pt-hour">11</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar busy" style="height: 90%;"></div>
-                  <span class="pt-hour">12</span>
-                </div>
-                <div class="pt-bar-col now">
-                  <div class="pt-bar current" style="height: 70%;"></div>
-                  <span class="pt-hour">1p</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar busy" style="height: 75%;"></div>
-                  <span class="pt-hour">2</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar" style="height: 55%;"></div>
-                  <span class="pt-hour">3</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar" style="height: 40%;"></div>
-                  <span class="pt-hour">4</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar" style="height: 50%;"></div>
-                  <span class="pt-hour">5</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar busy" style="height: 70%;"></div>
-                  <span class="pt-hour">6</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar busy" style="height: 85%;"></div>
-                  <span class="pt-hour">7</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar" style="height: 60%;"></div>
-                  <span class="pt-hour">8</span>
-                </div>
-                <div class="pt-bar-col">
-                  <div class="pt-bar" style="height: 30%;"></div>
-                  <span class="pt-hour">9</span>
-                </div>
-              </div>
-              <div class="pt-legend">
-                <span class="pt-now-indicator"></span> Currently: <strong>Moderately Busy</strong>
-              </div>
+            <!-- Inner Tab Navigation -->
+            <div class="ms-tabs">
+              <button class="ms-tab active" data-mstab="overview" onclick="switchMsTab(this)">Overview</button>
+              <button class="ms-tab" data-mstab="upcoming" onclick="switchMsTab(this)">Upcoming</button>
+              <button class="ms-tab" data-mstab="badges" onclick="switchMsTab(this)">Badges</button>
             </div>
 
-            <!-- Active Print Progress -->
-            <div class="section-label">Your Active Print</div>
-            <div class="widget-card active-print-card">
-              <div class="ap-header">
-                <div class="ap-machine">
-                  <div class="ap-machine-icon inuse-bg">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
+            <!-- ═══════ OVERVIEW TAB ═══════ -->
+            <div class="ms-tab-content active" id="mstab-overview">
+              <!-- Overall Status -->
+              <div class="makerspace-status-card">
+                <div class="status-header">
+                  <div class="status-title" id="ms-selected-name">Student Innovation Center</div>
+                  <div class="status-live"><span class="live-dot"></span>Live</div>
+                </div>
+                <div class="status-summary">
+                  <div class="status-stat">
+                    <div class="stat-number available">12</div>
+                    <div class="stat-label">Available</div>
                   </div>
-                  <div>
-                    <div class="ap-machine-name">Ultimaker S5</div>
-                    <div class="ap-file">gear_housing_v3.gcode</div>
+                  <div class="status-stat">
+                    <div class="stat-number in-use">8</div>
+                    <div class="stat-label">In Use</div>
+                  </div>
+                  <div class="status-stat">
+                    <div class="stat-number maintenance">2</div>
+                    <div class="stat-label">Maintenance</div>
                   </div>
                 </div>
-                <div class="ap-percent-ring">
-                  <svg viewBox="0 0 36 36" class="ap-circle-chart">
-                    <path class="ap-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                    <path class="ap-circle-fill" stroke-dasharray="67, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                    <text x="18" y="21" class="ap-circle-text">67%</text>
-                  </svg>
+                <div class="hours-info">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#666"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                  <span>Open today: 8:00 AM – 10:00 PM</span>
                 </div>
               </div>
-              <div class="ap-progress-track">
-                <div class="ap-progress-fill" style="width: 67%;"></div>
+
+              <!-- Popular Times -->
+              <div class="section-label">Popular Times</div>
+              <div class="widget-card popular-times-card">
+                <div class="pt-day-selector">
+                  <span class="pt-day">M</span>
+                  <span class="pt-day">T</span>
+                  <span class="pt-day active">W</span>
+                  <span class="pt-day">Th</span>
+                  <span class="pt-day">F</span>
+                  <span class="pt-day">Sa</span>
+                  <span class="pt-day dim">Su</span>
+                </div>
+                <div class="pt-chart">
+                  <div class="pt-bar-col"><div class="pt-bar" style="height: 15%;"></div><span class="pt-hour">8a</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar" style="height: 25%;"></div><span class="pt-hour">9</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar busy" style="height: 65%;"></div><span class="pt-hour">10</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar busy" style="height: 80%;"></div><span class="pt-hour">11</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar busy" style="height: 90%;"></div><span class="pt-hour">12</span></div>
+                  <div class="pt-bar-col now"><div class="pt-bar current" style="height: 70%;"></div><span class="pt-hour">1p</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar busy" style="height: 75%;"></div><span class="pt-hour">2</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar" style="height: 55%;"></div><span class="pt-hour">3</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar" style="height: 40%;"></div><span class="pt-hour">4</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar" style="height: 50%;"></div><span class="pt-hour">5</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar busy" style="height: 70%;"></div><span class="pt-hour">6</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar busy" style="height: 85%;"></div><span class="pt-hour">7</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar" style="height: 60%;"></div><span class="pt-hour">8</span></div>
+                  <div class="pt-bar-col"><div class="pt-bar" style="height: 30%;"></div><span class="pt-hour">9</span></div>
+                </div>
+                <div class="pt-legend">
+                  <span class="pt-now-indicator"></span> Currently: <strong>Moderately Busy</strong>
+                </div>
               </div>
-              <div class="ap-details">
-                <div class="ap-detail-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                  Est. done: 2:30 PM
+
+              <!-- Machine Categories -->
+              <div class="section-label">3D Printers</div>
+              <div class="machine-list">
+                <div class="machine-card">
+                  <div class="machine-icon-wrap available-bg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
+                  </div>
+                  <div class="machine-info">
+                    <div class="machine-name">Prusa i3 MK3S+ #1</div>
+                    <div class="machine-location">Room 1230, Bay A</div>
+                  </div>
+                  <div class="machine-status-badge available">Open</div>
                 </div>
-                <div class="ap-detail-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
-                  ~1h 45m remaining
+                <div class="machine-card">
+                  <div class="machine-icon-wrap available-bg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
+                  </div>
+                  <div class="machine-info">
+                    <div class="machine-name">Prusa i3 MK3S+ #2</div>
+                    <div class="machine-location">Room 1230, Bay A</div>
+                  </div>
+                  <div class="machine-status-badge available">Open</div>
                 </div>
-                <div class="ap-detail-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm4-8H8V6h8v3z"/></svg>
-                  Layer 142 of 212
+                <div class="machine-card">
+                  <div class="machine-icon-wrap inuse-bg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
+                  </div>
+                  <div class="machine-info">
+                    <div class="machine-name">Ultimaker S5</div>
+                    <div class="machine-location">Room 1230, Bay B</div>
+                    <div class="machine-eta">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#FF9800"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                      Est. done: 2:30 PM
+                    </div>
+                  </div>
+                  <div class="machine-status-badge in-use">In Use</div>
                 </div>
               </div>
-              <button class="ap-notify-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-                Notify me when done
-              </button>
+
+              <div class="section-label">Laser Cutters</div>
+              <div class="machine-list">
+                <div class="machine-card">
+                  <div class="machine-icon-wrap available-bg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/></svg>
+                  </div>
+                  <div class="machine-info">
+                    <div class="machine-name">Epilog Fusion Pro 32</div>
+                    <div class="machine-location">Room 1234</div>
+                  </div>
+                  <div class="machine-status-badge available">Open</div>
+                </div>
+                <div class="machine-card">
+                  <div class="machine-icon-wrap inuse-bg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/></svg>
+                  </div>
+                  <div class="machine-info">
+                    <div class="machine-name">Epilog Fusion Pro 48</div>
+                    <div class="machine-location">Room 1234</div>
+                    <div class="machine-eta">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#FF9800"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                      Est. done: 11:45 AM
+                    </div>
+                  </div>
+                  <div class="machine-status-badge in-use">In Use</div>
+                </div>
+              </div>
+
+              <!-- Reserve Button -->
+              <div class="reserve-section">
+                <button class="reserve-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+                  Reserve a Machine
+                </button>
+                <div class="reserve-hint">Reserve up to 2 hours in advance</div>
+              </div>
             </div>
 
-            <!-- My Certifications -->
-            <div class="section-label">My Certifications</div>
-            <div class="widget-card certs-card">
-              <div class="cert-item">
-                <div class="cert-badge earned">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <!-- ═══════ UPCOMING TAB ═══════ -->
+            <div class="ms-tab-content" id="mstab-upcoming">
+              <!-- Active Print -->
+              <div class="section-label">Your Active Print</div>
+              <div class="widget-card active-print-card">
+                <div class="ap-header">
+                  <div class="ap-machine">
+                    <div class="ap-machine-icon inuse-bg">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
+                    </div>
+                    <div>
+                      <div class="ap-machine-name">Ultimaker S5</div>
+                      <div class="ap-file">gear_housing_v3.gcode</div>
+                    </div>
+                  </div>
+                  <div class="ap-percent-ring">
+                    <svg viewBox="0 0 36 36" class="ap-circle-chart">
+                      <path class="ap-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                      <path class="ap-circle-fill" stroke-dasharray="67, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                      <text x="18" y="21" class="ap-circle-text">67%</text>
+                    </svg>
+                  </div>
                 </div>
-                <div class="cert-info">
-                  <div class="cert-name">3D Printing — FDM</div>
-                  <div class="cert-detail">Completed Oct 15, 2025</div>
+                <div class="ap-progress-track">
+                  <div class="ap-progress-fill" style="width: 67%;"></div>
                 </div>
-              </div>
-              <div class="cert-item">
-                <div class="cert-badge earned">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <div class="cert-info">
-                  <div class="cert-name">Laser Cutting — Basic</div>
-                  <div class="cert-detail">Completed Nov 2, 2025</div>
-                </div>
-              </div>
-              <div class="cert-item">
-                <div class="cert-badge earned">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <div class="cert-info">
-                  <div class="cert-name">Soldering Fundamentals</div>
-                  <div class="cert-detail">Completed Sep 8, 2025</div>
-                </div>
-              </div>
-              <div class="cert-item">
-                <div class="cert-badge pending-cert">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                </div>
-                <div class="cert-info">
-                  <div class="cert-name">CNC Milling — Basic</div>
-                  <div class="cert-detail pending-text">Next session: Mar 12, 2026</div>
-                </div>
-              </div>
-              <div class="cert-item">
-                <div class="cert-badge locked">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-                </div>
-                <div class="cert-info">
-                  <div class="cert-name">3D Printing — Resin (SLA)</div>
-                  <div class="cert-detail locked-text">Requires: FDM certification</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Machine Categories -->
-            <div class="section-label">3D Printers</div>
-            <div class="machine-list">
-              <div class="machine-card">
-                <div class="machine-icon-wrap available-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Prusa i3 MK3S+ #1</div>
-                  <div class="machine-location">Room 1230, Bay A</div>
-                </div>
-                <div class="machine-status-badge available">Open</div>
-              </div>
-              <div class="machine-card">
-                <div class="machine-icon-wrap available-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Prusa i3 MK3S+ #2</div>
-                  <div class="machine-location">Room 1230, Bay A</div>
-                </div>
-                <div class="machine-status-badge available">Open</div>
-              </div>
-              <div class="machine-card">
-                <div class="machine-icon-wrap inuse-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Ultimaker S5</div>
-                  <div class="machine-location">Room 1230, Bay B</div>
-                  <div class="machine-eta">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#FF9800"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <div class="ap-details">
+                  <div class="ap-detail-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
                     Est. done: 2:30 PM
                   </div>
-                </div>
-                <div class="machine-status-badge in-use">In Use</div>
-              </div>
-              <div class="machine-card">
-                <div class="machine-icon-wrap inuse-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Formlabs Form 3</div>
-                  <div class="machine-location">Room 1232</div>
-                  <div class="machine-eta">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#FF9800"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                    Est. done: 4:15 PM
+                  <div class="ap-detail-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+                    ~1h 45m remaining
+                  </div>
+                  <div class="ap-detail-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm4-8H8V6h8v3z"/></svg>
+                    Layer 142 of 212
                   </div>
                 </div>
-                <div class="machine-status-badge in-use">In Use</div>
+                <button class="ap-notify-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+                  Notify me when done
+                </button>
               </div>
-            </div>
 
-            <div class="section-label">Laser Cutters</div>
-            <div class="machine-list">
-              <div class="machine-card">
-                <div class="machine-icon-wrap available-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Epilog Fusion Pro 32</div>
-                  <div class="machine-location">Room 1234</div>
-                </div>
-                <div class="machine-status-badge available">Open</div>
-              </div>
-              <div class="machine-card">
-                <div class="machine-icon-wrap inuse-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Epilog Fusion Pro 48</div>
-                  <div class="machine-location">Room 1234</div>
-                  <div class="machine-eta">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#FF9800"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                    Est. done: 11:45 AM
+              <!-- Upcoming Reservations -->
+              <div class="section-label">Your Reservations</div>
+              <div class="widget-card upcoming-card">
+                <div class="upcoming-item">
+                  <div class="upcoming-date-badge">
+                    <div class="udb-month">MAR</div>
+                    <div class="udb-day">5</div>
                   </div>
+                  <div class="upcoming-info">
+                    <div class="upcoming-title">Prusa i3 MK3S+ #1</div>
+                    <div class="upcoming-detail">Student Innovation Center · Bay A</div>
+                    <div class="upcoming-time">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#888"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                      2:00 PM – 4:00 PM
+                    </div>
+                  </div>
+                  <div class="upcoming-status-pill confirmed">Confirmed</div>
                 </div>
-                <div class="machine-status-badge in-use">In Use</div>
+                <div class="upcoming-item">
+                  <div class="upcoming-date-badge">
+                    <div class="udb-month">MAR</div>
+                    <div class="udb-day">8</div>
+                  </div>
+                  <div class="upcoming-info">
+                    <div class="upcoming-title">Epilog Fusion Pro 32</div>
+                    <div class="upcoming-detail">Student Innovation Center · Rm 1234</div>
+                    <div class="upcoming-time">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#888"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                      10:00 AM – 11:30 AM
+                    </div>
+                  </div>
+                  <div class="upcoming-status-pill pending-res">Pending</div>
+                </div>
+              </div>
+
+              <!-- Upcoming Events / Workshops -->
+              <div class="section-label">Upcoming Workshops</div>
+              <div class="widget-card upcoming-card">
+                <div class="upcoming-item">
+                  <div class="upcoming-date-badge event-badge">
+                    <div class="udb-month">MAR</div>
+                    <div class="udb-day">10</div>
+                  </div>
+                  <div class="upcoming-info">
+                    <div class="upcoming-title">Intro to Resin 3D Printing</div>
+                    <div class="upcoming-detail">Student Innovation Center · Rm 1232</div>
+                    <div class="upcoming-time">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#888"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                      5:00 PM – 6:30 PM · 8 spots left
+                    </div>
+                  </div>
+                  <button class="upcoming-rsvp-btn">RSVP</button>
+                </div>
+                <div class="upcoming-item">
+                  <div class="upcoming-date-badge event-badge">
+                    <div class="udb-month">MAR</div>
+                    <div class="udb-day">12</div>
+                  </div>
+                  <div class="upcoming-info">
+                    <div class="upcoming-title">CNC Milling Certification</div>
+                    <div class="upcoming-detail">Student Innovation Center · Rm 1240</div>
+                    <div class="upcoming-time">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#888"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                      3:00 PM – 5:00 PM · Enrolled
+                    </div>
+                  </div>
+                  <div class="upcoming-status-pill confirmed">Enrolled</div>
+                </div>
+                <div class="upcoming-item">
+                  <div class="upcoming-date-badge event-badge">
+                    <div class="udb-month">MAR</div>
+                    <div class="udb-day">18</div>
+                  </div>
+                  <div class="upcoming-info">
+                    <div class="upcoming-title">Advanced Laser Techniques</div>
+                    <div class="upcoming-detail">Hoover Makerspace · Rm 204</div>
+                    <div class="upcoming-time">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#888"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                      4:00 PM – 5:30 PM · 3 spots left
+                    </div>
+                  </div>
+                  <button class="upcoming-rsvp-btn">RSVP</button>
+                </div>
               </div>
             </div>
 
-            <div class="section-label">CNC & Milling</div>
-            <div class="machine-list">
-              <div class="machine-card">
-                <div class="machine-icon-wrap available-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+            <!-- ═══════ BADGES TAB ═══════ -->
+            <div class="ms-tab-content" id="mstab-badges">
+              <!-- Training Progress -->
+              <div class="section-label">Your Training Progress</div>
+              <div class="widget-card badges-progress-card">
+                <div class="badges-progress-bar">
+                  <div class="badges-progress-fill" style="width: 60%;"></div>
                 </div>
-                <div class="machine-info">
-                  <div class="machine-name">Tormach PCNC 440</div>
-                  <div class="machine-location">Room 1240</div>
-                </div>
-                <div class="machine-status-badge available">Open</div>
+                <div class="badges-progress-label">3 of 5 certifications earned</div>
               </div>
-              <div class="machine-card">
-                <div class="machine-icon-wrap maintenance-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Haas Mini Mill</div>
-                  <div class="machine-location">Room 1240</div>
-                </div>
-                <div class="machine-status-badge maintenance">Maintenance</div>
-              </div>
-            </div>
 
-            <div class="section-label">Sewing & Textiles</div>
-            <div class="machine-list">
-              <div class="machine-card">
-                <div class="machine-icon-wrap available-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm4-8H8V6h8v3z"/></svg>
+              <!-- Earned Badges -->
+              <div class="section-label">Earned</div>
+              <div class="badges-grid">
+                <div class="badge-card earned">
+                  <div class="badge-icon-large">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M19 9h-2V3H7v6H5c-1.1 0-2 .9-2 2v5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-1.1-.9-2-2-2zM9 5h6v4H9V5z"/></svg>
+                  </div>
+                  <div class="badge-earned-check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </div>
+                  <div class="badge-title">3D Printing — FDM</div>
+                  <div class="badge-date">Oct 15, 2025</div>
                 </div>
-                <div class="machine-info">
-                  <div class="machine-name">Brother SE1900</div>
-                  <div class="machine-location">Room 1250</div>
+                <div class="badge-card earned">
+                  <div class="badge-icon-large">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/></svg>
+                  </div>
+                  <div class="badge-earned-check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </div>
+                  <div class="badge-title">Laser Cutting</div>
+                  <div class="badge-date">Nov 2, 2025</div>
                 </div>
-                <div class="machine-status-badge available">Open</div>
+                <div class="badge-card earned">
+                  <div class="badge-icon-large">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+                  </div>
+                  <div class="badge-earned-check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </div>
+                  <div class="badge-title">Soldering</div>
+                  <div class="badge-date">Sep 8, 2025</div>
+                </div>
               </div>
-              <div class="machine-card">
-                <div class="machine-icon-wrap available-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm4-8H8V6h8v3z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Vinyl Cutter - Silhouette</div>
-                  <div class="machine-location">Room 1250</div>
-                </div>
-                <div class="machine-status-badge available">Open</div>
-              </div>
-            </div>
 
-            <div class="section-label">Electronics & Soldering</div>
-            <div class="machine-list">
-              <div class="machine-card">
-                <div class="machine-icon-wrap available-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+              <!-- In Progress / Upcoming -->
+              <div class="section-label">In Progress</div>
+              <div class="badges-grid">
+                <div class="badge-card in-progress-badge">
+                  <div class="badge-icon-large">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                  </div>
+                  <div class="badge-title">CNC Milling</div>
+                  <div class="badge-date">Session: Mar 12</div>
                 </div>
-                <div class="machine-info">
-                  <div class="machine-name">Soldering Station #1-4</div>
-                  <div class="machine-location">Room 1260</div>
-                </div>
-                <div class="machine-status-badge available">3 Open</div>
               </div>
-              <div class="machine-card">
-                <div class="machine-icon-wrap maintenance-bg">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
-                </div>
-                <div class="machine-info">
-                  <div class="machine-name">Oscilloscope Bay</div>
-                  <div class="machine-location">Room 1260</div>
-                </div>
-                <div class="machine-status-badge maintenance">Maintenance</div>
-              </div>
-            </div>
 
-            <!-- Reserve Button -->
-            <div class="reserve-section">
-              <button class="reserve-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
-                Reserve a Machine
-              </button>
-              <div class="reserve-hint">Reserve up to 2 hours in advance</div>
+              <!-- Locked -->
+              <div class="section-label">Locked</div>
+              <div class="badges-grid">
+                <div class="badge-card locked-badge">
+                  <div class="badge-icon-large">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                  </div>
+                  <div class="badge-lock-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg>
+                  </div>
+                  <div class="badge-title">Resin 3D (SLA)</div>
+                  <div class="badge-date">Requires: FDM cert</div>
+                </div>
+              </div>
             </div>
 
             <div class="bottom-spacer"></div>
