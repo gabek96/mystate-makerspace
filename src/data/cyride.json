@@ -1,0 +1,6 @@
+{
+  "nearby": [
+    { "id": "r1", "number": "23", "name": "Orange Route", "stop": "Friley Hall", "eta": 3, "color": "#E53935" },
+    { "id": "r2", "number": "6", "name": "Blue Route", "stop": "Memorial Union", "eta": 7, "color": "#1E88E5" }
+  ]
+}

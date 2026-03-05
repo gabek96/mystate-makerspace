@@ -1,0 +1,174 @@
+{
+  "mealPlan": {
+    "type": "Gold",
+    "mealSwipes": { "used": 87, "total": 210, "perDay": 3, "usedToday": 1 },
+    "diningDollars": { "balance": 183.45, "total": 250.00 },
+    "getAndGo": { "usedToday": 0, "perDay": 2, "label": "GET & GO Swipes" },
+    "guestMeals": { "remaining": 3, "total": 5 },
+    "semesterEnd": "2026-05-15"
+  },
+  "transactions": [
+    { "id": "t1", "type": "swipe", "location": "Seasons Marketplace", "time": "Today, 12:15 PM", "detail": "Lunch meal swipe", "amount": null },
+    { "id": "t2", "type": "dining-dollars", "location": "Bookends Cafe", "time": "Today, 9:30 AM", "detail": "Iced Latte + Muffin", "amount": -6.75 },
+    { "id": "t3", "type": "get-go", "location": "GET & Go @ West Side", "time": "Yesterday, 5:45 PM", "detail": "GET & GO dinner pickup", "amount": null },
+    { "id": "t4", "type": "swipe", "location": "UDCC", "time": "Yesterday, 12:00 PM", "detail": "Lunch meal swipe", "amount": null },
+    { "id": "t5", "type": "dining-dollars", "location": "West Side Market", "time": "Yesterday, 3:20 PM", "detail": "Snacks + Drink", "amount": -4.25 },
+    { "id": "t6", "type": "get-go", "location": "GET & Go @ East Side", "time": "Mar 2, 11:45 AM", "detail": "GET & GO lunch pickup", "amount": null },
+    { "id": "t7", "type": "swipe", "location": "Friley Windows", "time": "Mar 2, 7:30 AM", "detail": "Breakfast meal swipe", "amount": null },
+    { "id": "t8", "type": "dining-dollars", "location": "Whirlybird's", "time": "Mar 1, 2:15 PM", "detail": "Smoothie Bowl", "amount": -8.50 }
+  ],
+  "locations": [
+    {
+      "id": "seasons", "name": "Seasons Marketplace", "category": "dining-center",
+      "building": "Maple-Willow-Larch Commons", "status": "open", "hours": "7:00 AM – 8:00 PM",
+      "acceptsSwipes": true, "acceptsGetGo": false, "acceptsDiningDollars": true,
+      "currentMeal": "Lunch", "crowdLevel": "busy"
+    },
+    {
+      "id": "udcc", "name": "Union Drive Marketplace", "category": "dining-center",
+      "building": "Union Drive Community Center", "status": "open", "hours": "7:00 AM – 7:00 PM",
+      "acceptsSwipes": true, "acceptsGetGo": false, "acceptsDiningDollars": true,
+      "currentMeal": "Lunch", "crowdLevel": "moderate"
+    },
+    {
+      "id": "conversations", "name": "Conversations", "category": "dining-center",
+      "building": "Oak-Elm Residence Hall", "status": "closed", "hours": "Opens at 5:00 PM",
+      "acceptsSwipes": true, "acceptsGetGo": true, "acceptsDiningDollars": true,
+      "currentMeal": null, "crowdLevel": null
+    },
+    {
+      "id": "friley", "name": "Friley Windows", "category": "dining-center",
+      "building": "Friley Hall", "status": "open", "hours": "7:00 AM – 11:00 PM",
+      "acceptsSwipes": true, "acceptsGetGo": false, "acceptsDiningDollars": true,
+      "currentMeal": "Late Night", "crowdLevel": "low"
+    },
+    {
+      "id": "hawthorn", "name": "Hawthorn Market & Café", "category": "fast-casual",
+      "building": "Frederiksen Court Community Center", "status": "open", "hours": "10:30 AM – 10:00 PM",
+      "acceptsSwipes": false, "acceptsGetGo": false, "acceptsDiningDollars": true,
+      "currentMeal": "Lunch", "crowdLevel": "moderate"
+    },
+    {
+      "id": "whirlybirds", "name": "Whirlybird's", "category": "cafe",
+      "building": "State Gymnasium", "status": "open", "hours": "10:00 AM – 10:00 PM",
+      "acceptsSwipes": false, "acceptsGetGo": false, "acceptsDiningDollars": true,
+      "currentMeal": null, "crowdLevel": "low"
+    },
+    {
+      "id": "bookends", "name": "Bookends Cafe", "category": "cafe",
+      "building": "Parks Library", "status": "open", "hours": "7:30 AM – 10:00 PM",
+      "acceptsSwipes": false, "acceptsGetGo": false, "acceptsDiningDollars": true,
+      "currentMeal": null, "crowdLevel": "moderate"
+    },
+    {
+      "id": "westside", "name": "West Side Market", "category": "convenience",
+      "building": "Union Drive Community Center", "status": "open", "hours": "8:30 AM – 11:00 PM",
+      "acceptsSwipes": false, "acceptsGetGo": true, "acceptsDiningDollars": true,
+      "currentMeal": null, "crowdLevel": "low"
+    },
+    {
+      "id": "eastside", "name": "East Side Market", "category": "convenience",
+      "building": "Maple-Willow-Larch Commons", "status": "open", "hours": "7:30 AM – 11:00 PM",
+      "acceptsSwipes": false, "acceptsGetGo": true, "acceptsDiningDollars": true,
+      "currentMeal": null, "crowdLevel": "moderate"
+    }
+  ],
+  "getAndGo": {
+    "locations": [
+      {
+        "id": "getgo-west",
+        "name": "GET & Go @ West Side Market",
+        "building": "Union Drive Community Center",
+        "status": "open",
+        "hours": "8:45 AM – 10:30 PM",
+        "pickupTime": "10–15 min",
+        "menu": [
+          {
+            "category": "Entrees",
+            "items": [
+              { "id": "gg1", "name": "Grilled Chicken Wrap", "description": "Seasoned chicken, lettuce, tomato, ranch in a flour tortilla", "calories": 520, "tags": ["popular"], "allergens": ["wheat", "dairy"] },
+              { "id": "gg2", "name": "BBQ Pulled Pork Sandwich", "description": "Slow-smoked pork, coleslaw, brioche bun", "calories": 610, "tags": [], "allergens": ["wheat", "soy"] },
+              { "id": "gg3", "name": "Black Bean Burger", "description": "House-made patty, avocado, chipotle aioli", "calories": 480, "tags": ["vegetarian"], "allergens": ["wheat", "soy"] },
+              { "id": "gg4", "name": "Chicken Tenders Basket", "description": "4 crispy tenders, fries, honey mustard", "calories": 720, "tags": ["popular"], "allergens": ["wheat", "egg"] },
+              { "id": "gg5", "name": "Mediterranean Bowl", "description": "Quinoa, falafel, hummus, cucumber, feta, tahini drizzle", "calories": 560, "tags": ["vegetarian", "healthy"], "allergens": ["wheat", "dairy"] }
+            ]
+          },
+          {
+            "category": "Sides",
+            "items": [
+              { "id": "gg6", "name": "French Fries", "description": "Crispy seasoned fries", "calories": 320, "tags": [], "allergens": [] },
+              { "id": "gg7", "name": "Side Salad", "description": "Mixed greens, cherry tomatoes, croutons", "calories": 140, "tags": ["healthy"], "allergens": ["wheat"] },
+              { "id": "gg8", "name": "Mac & Cheese", "description": "Creamy three-cheese blend", "calories": 380, "tags": ["popular"], "allergens": ["wheat", "dairy"] },
+              { "id": "gg9", "name": "Fruit Cup", "description": "Seasonal fresh fruit mix", "calories": 90, "tags": ["healthy", "vegan"], "allergens": [] }
+            ]
+          },
+          {
+            "category": "Drinks",
+            "items": [
+              { "id": "gg10", "name": "Fountain Drink (20oz)", "description": "Pepsi, Diet Pepsi, Mountain Dew, Sierra Mist", "calories": 250, "tags": [], "allergens": [] },
+              { "id": "gg11", "name": "Bottled Water", "description": "16.9oz", "calories": 0, "tags": [], "allergens": [] },
+              { "id": "gg12", "name": "Gatorade", "description": "Assorted flavors", "calories": 140, "tags": [], "allergens": [] }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "getgo-east",
+        "name": "GET & Go @ East Side Market",
+        "building": "Maple-Willow-Larch Commons",
+        "status": "open",
+        "hours": "7:45 AM – 10:30 PM",
+        "pickupTime": "10–15 min",
+        "menu": [
+          {
+            "category": "Entrees",
+            "items": [
+              { "id": "ge1", "name": "Stir Fry Bowl", "description": "Chicken or tofu, mixed veggies, jasmine rice, teriyaki", "calories": 540, "tags": ["popular"], "allergens": ["soy", "wheat"] },
+              { "id": "ge2", "name": "Turkey Club Wrap", "description": "Smoked turkey, bacon, lettuce, tomato, mayo", "calories": 490, "tags": [], "allergens": ["wheat", "dairy"] },
+              { "id": "ge3", "name": "Margherita Flatbread", "description": "Fresh mozzarella, basil, tomato sauce", "calories": 450, "tags": ["vegetarian"], "allergens": ["wheat", "dairy"] },
+              { "id": "ge4", "name": "Chicken Quesadilla", "description": "Grilled chicken, peppers, cheese, salsa, sour cream", "calories": 580, "tags": ["popular"], "allergens": ["wheat", "dairy"] },
+              { "id": "ge5", "name": "Poke Bowl", "description": "Sushi rice, edamame, cucumber, avocado, spicy mayo", "calories": 510, "tags": ["healthy"], "allergens": ["soy", "fish"] }
+            ]
+          },
+          {
+            "category": "Sides",
+            "items": [
+              { "id": "ge6", "name": "Sweet Potato Fries", "description": "Lightly seasoned with chipotle mayo", "calories": 340, "tags": [], "allergens": ["egg"] },
+              { "id": "ge7", "name": "Miso Soup", "description": "Traditional miso with tofu and scallions", "calories": 85, "tags": ["healthy", "vegan"], "allergens": ["soy"] },
+              { "id": "ge8", "name": "Chips & Guacamole", "description": "Tortilla chips with house-made guac", "calories": 290, "tags": ["vegan"], "allergens": [] },
+              { "id": "ge9", "name": "Yogurt Parfait", "description": "Greek yogurt, granola, mixed berries", "calories": 220, "tags": ["healthy"], "allergens": ["dairy", "wheat"] }
+            ]
+          },
+          {
+            "category": "Drinks",
+            "items": [
+              { "id": "ge10", "name": "Iced Coffee", "description": "Cold brew with choice of milk", "calories": 120, "tags": ["popular"], "allergens": ["dairy"] },
+              { "id": "ge11", "name": "Smoothie", "description": "Mango, banana, strawberry blend", "calories": 230, "tags": ["healthy"], "allergens": [] },
+              { "id": "ge12", "name": "Lemonade", "description": "Fresh-squeezed, 20oz", "calories": 180, "tags": [], "allergens": [] }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "getgo-conversations",
+        "name": "Conversations GET & Go",
+        "building": "Oak-Elm Residence Hall",
+        "status": "closed",
+        "hours": "Opens at 8:00 PM",
+        "pickupTime": "10–15 min",
+        "menu": [
+          {
+            "category": "Late Night",
+            "items": [
+              { "id": "gc1", "name": "Pizza Slice (Cheese)", "description": "Hand-tossed, NY-style cheese pizza", "calories": 380, "tags": ["popular", "vegetarian"], "allergens": ["wheat", "dairy"] },
+              { "id": "gc2", "name": "Pizza Slice (Pepperoni)", "description": "Hand-tossed with pepperoni", "calories": 420, "tags": ["popular"], "allergens": ["wheat", "dairy"] },
+              { "id": "gc3", "name": "Mozzarella Sticks", "description": "6 sticks with marinara dipping sauce", "calories": 510, "tags": [], "allergens": ["wheat", "dairy"] },
+              { "id": "gc4", "name": "Grilled Cheese", "description": "Three-cheese blend on sourdough", "calories": 440, "tags": ["vegetarian"], "allergens": ["wheat", "dairy"] },
+              { "id": "gc5", "name": "Cookie (Fresh Baked)", "description": "Chocolate chip, warm from the oven", "calories": 350, "tags": ["popular"], "allergens": ["wheat", "dairy", "egg"] }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

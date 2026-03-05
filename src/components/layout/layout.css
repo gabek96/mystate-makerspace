@@ -1,0 +1,219 @@
+/* ============================================
+   Layout Styles
+   ============================================ */
+
+/* App Shell */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  background: var(--bg-primary);
+}
+
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(var(--nav-height) + var(--safe-bottom));
+}
+
+/* App Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--bg-header);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: var(--safe-top) 0 0 0;
+}
+
+.header-gradient {
+  background: linear-gradient(135deg, var(--cardinal), var(--cardinal-dark));
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  min-height: var(--header-height);
+}
+
+.header-logo {
+  flex-shrink: 0;
+}
+
+.header-back {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  color: var(--text-inverse);
+  transition: background var(--duration-fast);
+}
+
+.header-back:active {
+  background: rgba(255,255,255,0.15);
+}
+
+.header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.header-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-inverse);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-theme="dark"] .app-header:not(.header-gradient) .header-title {
+  color: var(--text-primary);
+}
+
+.header-subtitle {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+[data-theme="dark"] .app-header:not(.header-gradient) .header-subtitle {
+  color: var(--text-secondary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.header-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  color: var(--text-inverse);
+  transition: background var(--duration-fast);
+}
+
+[data-theme="dark"] .app-header:not(.header-gradient) .header-btn {
+  color: var(--text-primary);
+}
+
+.header-btn:active {
+  background: rgba(255,255,255,0.15);
+}
+
+.notif-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: var(--cardinal);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-header);
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  z-index: var(--z-nav);
+  background: var(--bg-nav);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-primary);
+  display: flex;
+  align-items: stretch;
+  height: calc(var(--nav-height) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+}
+
+.nav-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: var(--space-sm) 0;
+  color: var(--text-tertiary);
+  transition: color var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+
+.nav-tab.active {
+  color: var(--cardinal);
+}
+
+.nav-tab.maker-tab.active {
+  color: var(--gold);
+}
+
+.nav-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 36px;
+  height: 3px;
+  background: var(--cardinal);
+  border-radius: 0 0 3px 3px;
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.nav-tab.active::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-tab.maker-tab.active::before {
+  background: linear-gradient(90deg, var(--cardinal), var(--gold));
+}
+
+.nav-tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.nav-tab-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Scroll content area */
+.scroll-content {
+  padding-bottom: var(--space-3xl);
+}

@@ -1,0 +1,11 @@
+{
+  "current": {
+    "temp": 34,
+    "high": 41,
+    "low": 28,
+    "condition": "Partly Cloudy",
+    "icon": "sun",
+    "wind": "12 mph NW",
+    "location": "Ames, Iowa"
+  }
+}

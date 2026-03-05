@@ -1,0 +1,73 @@
+/* ============================================
+   Theme System — Dark + Light
+   ============================================ */
+
+/* Dark Theme (default) */
+[data-theme="dark"] {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #131318;
+  --bg-card: #1a1a22;
+  --bg-card-hover: #22222c;
+  --bg-elevated: #252530;
+  --bg-header: rgba(10, 10, 15, 0.92);
+  --bg-nav: rgba(13, 13, 18, 0.95);
+  --bg-input: #1e1e28;
+  --bg-chip: #2a2a35;
+  --bg-badge: rgba(200, 16, 46, 0.15);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --text-tertiary: #666680;
+  --text-inverse: #0a0a0f;
+
+  --border-primary: #2a2a35;
+  --border-secondary: #1e1e28;
+  --border-focus: var(--cardinal);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 20px rgba(200, 16, 46, 0.15);
+
+  --overlay: rgba(0, 0, 0, 0.6);
+  --skeleton: linear-gradient(90deg, #1a1a22 25%, #252530 50%, #1a1a22 75%);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f0f3;
+  --bg-elevated: #ffffff;
+  --bg-header: rgba(200, 16, 46, 0.97);
+  --bg-nav: rgba(255, 255, 255, 0.97);
+  --bg-input: #f0f0f3;
+  --bg-chip: #e8e8ed;
+  --bg-badge: rgba(200, 16, 46, 0.1);
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #666680;
+  --text-tertiary: #999;
+  --text-inverse: #ffffff;
+
+  --border-primary: #e0e0e8;
+  --border-secondary: #eee;
+  --border-focus: var(--cardinal);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 20px rgba(200, 16, 46, 0.08);
+
+  --overlay: rgba(0, 0, 0, 0.3);
+  --skeleton: linear-gradient(90deg, #f0f0f3 25%, #e8e8ed 50%, #f0f0f3 75%);
+}
+
+/* Light theme header text stays white since header bg is cardinal */
+[data-theme="light"] .app-header {
+  color: #fff;
+}
+[data-theme="light"] .app-header .text-secondary {
+  color: rgba(255,255,255,0.8);
+}

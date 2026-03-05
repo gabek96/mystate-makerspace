@@ -1,0 +1,29 @@
+{
+  "user": {
+    "initials": "CY",
+    "fullName": "Cy Clone",
+    "netId": "cclone",
+    "username": "@cyclone25",
+    "major": "Mechanical Engineering, B.S.",
+    "year": "Junior",
+    "classOf": "2027",
+    "isuId": "820-XXX-XXX"
+  },
+  "stats": {
+    "totalHours": 47,
+    "printJobs": 23,
+    "certifications": 3,
+    "reservations": 5
+  },
+  "semester": {
+    "hours": { "current": 47, "max": 100 },
+    "filament": { "current": 320, "unit": "g" },
+    "projects": { "current": 6, "max": 10 }
+  },
+  "activity": [
+    { "id": "a1", "type": "complete", "text": "Print completed — gear_housing_v3", "detail": "Today, 11:30 AM · Ultimaker S5", "color": "#4CAF50" },
+    { "id": "a2", "type": "reservation", "text": "Reserved Epilog Fusion Pro 32", "detail": "Today, 3:00 PM · Room 1234", "color": "#2196F3" },
+    { "id": "a3", "type": "print", "text": "Print started — bracket_mount_v2", "detail": "Yesterday, 4:15 PM · Prusa i3 MK3S+", "color": "#FF9800" },
+    { "id": "a4", "type": "badge", "text": "Certification earned — Laser Cutting", "detail": "Nov 2, 2025", "color": "#9C27B0" }
+  ]
+}

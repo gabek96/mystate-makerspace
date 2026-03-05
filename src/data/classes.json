@@ -1,0 +1,7 @@
+{
+  "today": [
+    { "id": "c1", "name": "ME 270 - Engineering Dynamics", "time": "10:00 AM - 10:50 AM", "room": "Hoover 1213", "color": "#C8102E" },
+    { "id": "c2", "name": "CPRE 281 - Digital Logic", "time": "12:40 PM - 1:30 PM", "room": "Coover 2245", "color": "#F1BE48" },
+    { "id": "c3", "name": "ENGL 250 - Written Communication", "time": "2:10 PM - 3:00 PM", "room": "Ross 124", "color": "#4CAF50" }
+  ]
+}

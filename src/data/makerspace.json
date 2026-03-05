@@ -1,0 +1,188 @@
+{
+  "location": {
+    "name": "Student Innovation Center",
+    "shortName": "SIC",
+    "building": "Student Innovation Center",
+    "hours": "8:00 AM – 10:00 PM",
+    "isOpen": true
+  },
+  "summary": {
+    "available": 12,
+    "inUse": 8,
+    "maintenance": 2,
+    "total": 22
+  },
+  "areas": [
+    {
+      "id": "3d-printing",
+      "name": "3D Printing Lab",
+      "room": "Room 1230",
+      "color": ["#C8102E", "#a00d24"],
+      "icon": "printer3d",
+      "machines": [
+        { "id": "prusa-1", "name": "Prusa #1", "status": "available", "detail": "Open" },
+        { "id": "prusa-2", "name": "Prusa #2", "status": "available", "detail": "Open" },
+        { "id": "ultimaker-s5", "name": "Ultimaker S5", "status": "in-use", "detail": "2:30 PM", "job": "gear_housing_v3.gcode", "progress": 67 },
+        { "id": "formlabs-3", "name": "Formlabs Form 3", "status": "in-use", "detail": "4:15 PM" }
+      ]
+    },
+    {
+      "id": "laser-cutting",
+      "name": "Laser Cutting Lab",
+      "room": "Room 1234",
+      "color": ["#F1BE48", "#c99a20"],
+      "icon": "laser",
+      "machines": [
+        { "id": "epilog-32", "name": "Epilog Pro 32", "status": "available", "detail": "Open" },
+        { "id": "epilog-48", "name": "Epilog Pro 48", "status": "in-use", "detail": "11:45 AM" }
+      ]
+    },
+    {
+      "id": "cnc-milling",
+      "name": "CNC & Milling",
+      "room": "Room 3112",
+      "color": ["#2196F3", "#1565C0"],
+      "icon": "cnc",
+      "machines": [
+        { "id": "tormach", "name": "Tormach PCNC 440", "status": "available", "detail": "Open" },
+        { "id": "haas", "name": "Haas Mini Mill", "status": "maintenance", "detail": "Maint." }
+      ]
+    },
+    {
+      "id": "sewing-textiles",
+      "name": "Sewing & Textiles",
+      "room": "Room 1250",
+      "color": ["#9C27B0", "#6A1B9A"],
+      "icon": "sewing",
+      "machines": [
+        { "id": "brother", "name": "Brother SE1900", "status": "available", "detail": "Open" },
+        { "id": "vinyl", "name": "Vinyl Cutter", "status": "available", "detail": "Open" }
+      ]
+    },
+    {
+      "id": "electronics",
+      "name": "Electronics & Soldering",
+      "room": "Room 1260",
+      "color": ["#4CAF50", "#2e7d32"],
+      "icon": "electronics",
+      "machines": [
+        { "id": "solder-1", "name": "Soldering #1", "status": "available", "detail": "Open" },
+        { "id": "solder-2", "name": "Soldering #2", "status": "available", "detail": "Open" },
+        { "id": "solder-3", "name": "Soldering #3", "status": "available", "detail": "Open" },
+        { "id": "solder-4", "name": "Soldering #4", "status": "in-use", "detail": "In Use" },
+        { "id": "oscilloscope", "name": "Oscilloscope", "status": "maintenance", "detail": "Maint." }
+      ]
+    },
+    {
+      "id": "woodworking",
+      "name": "Woodworking Shop",
+      "room": "Room 0150 (Basement)",
+      "color": ["#795548", "#4E342E"],
+      "icon": "tools",
+      "machines": [
+        { "id": "table-saw", "name": "Table Saw", "status": "available", "detail": "Open" },
+        { "id": "band-saw", "name": "Band Saw", "status": "available", "detail": "Open" },
+        { "id": "drill-press", "name": "Drill Press", "status": "available", "detail": "Open" },
+        { "id": "router-table", "name": "Router Table", "status": "available", "detail": "Open" },
+        { "id": "lathe", "name": "Lathe", "status": "in-use", "detail": "In Use" },
+        { "id": "planer", "name": "Planer", "status": "in-use", "detail": "In Use" }
+      ]
+    }
+  ],
+  "popularTimes": {
+    "days": ["M", "T", "W", "Th", "F", "Sa", "Su"],
+    "currentDay": 2,
+    "data": {
+      "W": [15, 25, 65, 80, 90, 70, 75, 55, 40, 50, 70, 85, 60, 30],
+      "M": [10, 20, 50, 70, 85, 75, 80, 60, 45, 55, 65, 70, 50, 25],
+      "T": [12, 30, 55, 75, 80, 65, 70, 50, 40, 60, 75, 80, 55, 20],
+      "Th": [15, 25, 60, 80, 85, 70, 75, 55, 45, 50, 65, 75, 55, 25],
+      "F": [10, 20, 45, 60, 70, 55, 50, 40, 35, 40, 50, 55, 40, 15],
+      "Sa": [5, 10, 20, 35, 45, 40, 45, 35, 30, 35, 40, 30, 20, 10],
+      "Su": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    "hours": ["8a", "9", "10", "11", "12", "1p", "2", "3", "4", "5", "6", "7", "8", "9"],
+    "currentHour": 5,
+    "currentLevel": "Moderately Busy"
+  },
+  "activePrint": {
+    "machine": "Ultimaker S5",
+    "file": "gear_housing_v3.gcode",
+    "progress": 67,
+    "estDone": "2:30 PM",
+    "remaining": "~1h 45m",
+    "layer": "142 of 212"
+  },
+  "reservations": [
+    {
+      "id": "res-1",
+      "machine": "Prusa i3 MK3S+ #1",
+      "location": "Student Innovation Center · Bay A",
+      "date": "2026-03-05",
+      "month": "MAR",
+      "day": 5,
+      "time": "2:00 PM – 4:00 PM",
+      "status": "confirmed"
+    },
+    {
+      "id": "res-2",
+      "machine": "Epilog Fusion Pro 32",
+      "location": "Student Innovation Center · Rm 1234",
+      "date": "2026-03-08",
+      "month": "MAR",
+      "day": 8,
+      "time": "10:00 AM – 11:30 AM",
+      "status": "pending"
+    }
+  ],
+  "workshops": [
+    {
+      "id": "ws-1",
+      "title": "Intro to Resin 3D Printing",
+      "location": "Student Innovation Center · Rm 1232",
+      "date": "2026-03-10",
+      "month": "MAR",
+      "day": 10,
+      "time": "5:00 PM – 6:30 PM",
+      "spots": 8,
+      "enrolled": false
+    },
+    {
+      "id": "ws-2",
+      "title": "CNC Milling Certification",
+      "location": "Student Innovation Center · Rm 1240",
+      "date": "2026-03-12",
+      "month": "MAR",
+      "day": 12,
+      "time": "3:00 PM – 5:00 PM",
+      "spots": 0,
+      "enrolled": true
+    },
+    {
+      "id": "ws-3",
+      "title": "Advanced Laser Techniques",
+      "location": "Hoover Makerspace · Rm 204",
+      "date": "2026-03-18",
+      "month": "MAR",
+      "day": 18,
+      "time": "4:00 PM – 5:30 PM",
+      "spots": 3,
+      "enrolled": false
+    }
+  ],
+  "badges": {
+    "earned": [
+      { "id": "b-fdm", "name": "3D Printing — FDM", "date": "Oct 15, 2025", "icon": "printer3d" },
+      { "id": "b-laser", "name": "Laser Cutting", "date": "Nov 2, 2025", "icon": "laser" },
+      { "id": "b-solder", "name": "Soldering", "date": "Sep 8, 2025", "icon": "electronics" }
+    ],
+    "inProgress": [
+      { "id": "b-cnc", "name": "CNC Milling", "date": "Session: Mar 12", "icon": "cnc" }
+    ],
+    "locked": [
+      { "id": "b-sla", "name": "Resin 3D (SLA)", "requires": "FDM cert", "icon": "lock" }
+    ],
+    "totalEarned": 3,
+    "totalAvailable": 5
+  }
+}

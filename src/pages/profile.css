@@ -1,0 +1,361 @@
+/* ============================================
+   Profile Page Styles
+   ============================================ */
+
+.profile-page {
+  padding-bottom: var(--space-2xl);
+}
+
+.profile-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+/* User Card */
+.profile-card {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+  background: linear-gradient(135deg, var(--cardinal), #a00d26);
+  color: white;
+  margin: var(--space-lg);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  margin: 0 auto var(--space-md);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.profile-name {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.profile-handle {
+  font-size: var(--text-sm);
+  opacity: 0.8;
+  margin-bottom: var(--space-md);
+}
+
+.profile-meta {
+  font-size: var(--text-xs);
+  opacity: 0.85;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.profile-divider {
+  opacity: 0.5;
+}
+
+/* Stats */
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  margin: 0 var(--space-lg);
+}
+
+.profile-stat {
+  text-align: center;
+  padding: var(--space-md) var(--space-sm);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-primary);
+}
+
+.profile-stat-number {
+  display: block;
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--cardinal);
+}
+
+.profile-stat-label {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* Usage Bars */
+.usage-item + .usage-item {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-secondary);
+}
+
+.usage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.usage-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.usage-value {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.usage-bar-track {
+  height: 8px;
+  background: var(--bg-input);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.usage-bar-fill {
+  height: 100%;
+  background: var(--cardinal);
+  border-radius: 4px;
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.usage-bar-fill.gold {
+  background: var(--gold);
+}
+
+.usage-bar-fill.purple {
+  background: #9C27B0;
+}
+
+/* Activity Feed */
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+}
+
+.activity-item + .activity-item {
+  border-top: 1px solid var(--border-secondary);
+}
+
+.activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.activity-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-text {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.activity-detail {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* ISU ID Card */
+.isu-id-card {
+  margin: var(--space-sm) var(--space-lg);
+  padding: var(--space-lg);
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: var(--radius-lg);
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.isu-id-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -20%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(200, 16, 46, 0.15);
+}
+
+.id-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.id-card-logo {
+  font-size: 20px;
+}
+
+.id-card-school {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.id-card-body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.id-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  background: rgba(200, 16, 46, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.id-card-info {
+  flex: 1;
+}
+
+.id-card-name {
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.id-card-detail {
+  font-size: var(--text-xs);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.id-card-id {
+  font-size: var(--text-xs);
+  opacity: 0.5;
+  margin-top: var(--space-xs);
+  font-family: monospace;
+}
+
+.id-card-barcode {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.barcode-lines {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.5px;
+  margin-bottom: var(--space-xs);
+}
+
+.barcode-line {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0.5px;
+}
+
+.barcode-number {
+  font-size: 10px;
+  font-family: monospace;
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
+
+/* Settings */
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+}
+
+.settings-row + .settings-row {
+  border-top: 1px solid var(--border-secondary);
+}
+
+.settings-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.settings-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.settings-detail {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  margin-top: 1px;
+}
+
+.settings-arrow {
+  font-size: var(--text-xl);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
