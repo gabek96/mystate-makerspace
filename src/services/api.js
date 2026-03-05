@@ -3,7 +3,7 @@
  * All data flows through here so swapping to real APIs later is trivial.
  */
 
-import weatherData from '../data/weather.json';
+import { fetchWeather } from './weather.js';
 import classesData from '../data/classes.json';
 import cyrideData from '../data/cyride.json';
 import diningData from '../data/dining.json';
@@ -26,8 +26,7 @@ const clone = (obj) => JSON.parse(JSON.stringify(obj));
 
 export const api = {
   async getWeather() {
-    await delay(100);
-    return clone(weatherData.current);
+    return fetchWeather();
   },
 
   async getClasses() {
@@ -140,10 +139,15 @@ export const api = {
 
   async getMakerspaceSummary() {
     await delay(100);
+    const areas = makerspaceData.areas.map(a => {
+      const avail = a.machines.filter(m => m.status === 'available').length;
+      return { name: a.name.replace(/ Lab| Shop| & Soldering| & Textiles| & Milling/g, ''), avail, total: a.machines.length };
+    });
     return {
       location: clone(makerspaceData.location),
       summary: clone(makerspaceData.summary),
-      activePrint: clone(makerspaceData.activePrint)
+      activePrint: clone(makerspaceData.activePrint),
+      areas
     };
   },
 

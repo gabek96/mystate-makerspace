@@ -9,6 +9,21 @@
   background: linear-gradient(135deg, #1a1a30, #252540);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-primary);
+  position: relative;
+}
+
+.weather-live {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4CAF50;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 [data-theme="light"] .weather-card {

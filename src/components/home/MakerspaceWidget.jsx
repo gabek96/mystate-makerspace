@@ -3,13 +3,7 @@ import './home.css';
 export default function MakerspaceWidget({ data, onClick }) {
   if (!data) return <div className="widget-card skeleton" style={{ height: 140 }} />;
 
-  const { location, summary } = data;
-  const areas = [
-    { name: '3D Printers', avail: 2, total: 4 },
-    { name: 'Laser Cutters', avail: 1, total: 2 },
-    { name: 'CNC', avail: 1, total: 2 },
-    { name: 'Sewing', avail: 2, total: 2 }
-  ];
+  const { location, summary, areas } = data;
 
   return (
     <div className="widget-card makerspace-widget tap-scale animate-in" onClick={onClick} role="button" tabIndex={0}>
