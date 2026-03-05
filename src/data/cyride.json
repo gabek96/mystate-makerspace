@@ -1,21 +1,125 @@
 {
-  "nearby": [
-    { "id": "r1", "number": "23", "name": "Orange Route", "stop": "Friley Hall", "eta": 3, "color": "#E53935" },
-    { "id": "r2", "number": "6", "name": "Blue Route", "stop": "Memorial Union", "eta": 7, "color": "#1E88E5" }
-  ],
   "routes": [
-    { "id": "rt1", "number": "1", "name": "Red Route", "color": "#C62828", "status": "active", "frequency": "15 min", "stops": ["Ames Intermodal", "Lincoln Way & Beach", "Campustown", "Memorial Union", "Beardshear", "Parks Library", "Friley Hall", "Frederiksen Court"] },
-    { "id": "rt2", "number": "2", "name": "Green Route", "color": "#2E7D32", "status": "active", "frequency": "15 min", "stops": ["Ames Intermodal", "South Duff", "Airport Rd", "University Blvd", "Research Park", "Veterinary Medicine"] },
-    { "id": "rt3", "number": "3", "name": "Blue Route", "color": "#1565C0", "status": "active", "frequency": "12 min", "stops": ["Schilletter Village", "University Village", "Jack Trice Stadium", "Hilton Coliseum", "Memorial Union", "Design", "Howe Hall", "Coover Hall"] },
-    { "id": "rt4", "number": "6", "name": "Brown Route", "color": "#795548", "status": "active", "frequency": "20 min", "stops": ["North Grand Mall", "Grand & Duff", "Ames Intermodal", "Campustown", "Memorial Union"] },
-    { "id": "rt5", "number": "21", "name": "Cardinal Route", "color": "#C8102E", "status": "active", "frequency": "10 min", "stops": ["Frederiksen Court", "Hawthorn Court", "Campustown", "Beardshear", "Parks Library", "Memorial Union"] },
-    { "id": "rt6", "number": "23", "name": "Orange Route", "color": "#E65100", "status": "active", "frequency": "12 min", "stops": ["ISU Research Park", "Mortensen & S Dakota", "Campustown", "Friley Hall", "Helser Hall", "Buchanan Hall"] },
-    { "id": "rt7", "number": "25", "name": "Gold Route", "color": "#F1BE48", "status": "active", "frequency": "15 min", "stops": ["North Ames", "Stange Rd", "Pammel Dr", "Central Campus", "Campustown", "West Ames"] },
-    { "id": "rt8", "number": "9", "name": "Plum Route", "color": "#6A1B9A", "status": "inactive", "frequency": "20 min", "stops": ["Ames Intermodal", "South 16th", "SE 16th", "Airport Rd", "South Duff"] }
+    {
+      "id": "rt1", "number": "1", "name": "Red Route", "color": "#C62828", "status": "active", "frequency": "15 min",
+      "stops": [
+        { "id": "s1", "name": "Ames Intermodal", "lat": 42.0234, "lng": -93.6148, "arrivals": ["2:15 PM", "2:30 PM", "2:45 PM"] },
+        { "id": "s2", "name": "Lincoln Way & Beach", "lat": 42.0216, "lng": -93.6315, "arrivals": ["2:19 PM", "2:34 PM", "2:49 PM"] },
+        { "id": "s3", "name": "Campustown", "lat": 42.0238, "lng": -93.6467, "arrivals": ["2:22 PM", "2:37 PM", "2:52 PM"] },
+        { "id": "s4", "name": "Memorial Union", "lat": 42.0268, "lng": -93.6465, "arrivals": ["2:25 PM", "2:40 PM", "2:55 PM"] },
+        { "id": "s5", "name": "Beardshear Hall", "lat": 42.0261, "lng": -93.6490, "arrivals": ["2:27 PM", "2:42 PM", "2:57 PM"] },
+        { "id": "s6", "name": "Parks Library", "lat": 42.0279, "lng": -93.6488, "arrivals": ["2:28 PM", "2:43 PM", "2:58 PM"] },
+        { "id": "s7", "name": "Friley Hall", "lat": 42.0251, "lng": -93.6516, "arrivals": ["2:30 PM", "2:45 PM", "3:00 PM"] },
+        { "id": "s8", "name": "Frederiksen Court", "lat": 42.0177, "lng": -93.6565, "arrivals": ["2:33 PM", "2:48 PM", "3:03 PM"] }
+      ],
+      "vehicles": [
+        { "id": "v1", "lat": 42.0221, "lng": -93.6380, "heading": 270, "speed": 25 },
+        { "id": "v2", "lat": 42.0273, "lng": -93.6489, "heading": 180, "speed": 15 }
+      ]
+    },
+    {
+      "id": "rt2", "number": "2", "name": "Green Route", "color": "#2E7D32", "status": "active", "frequency": "15 min",
+      "stops": [
+        { "id": "s9", "name": "Ames Intermodal", "lat": 42.0234, "lng": -93.6148, "arrivals": ["2:20 PM", "2:35 PM", "2:50 PM"] },
+        { "id": "s10", "name": "South Duff", "lat": 42.0142, "lng": -93.6097, "arrivals": ["2:24 PM", "2:39 PM", "2:54 PM"] },
+        { "id": "s11", "name": "Airport Rd", "lat": 42.0048, "lng": -93.6200, "arrivals": ["2:28 PM", "2:43 PM", "2:58 PM"] },
+        { "id": "s12", "name": "University Blvd", "lat": 42.0110, "lng": -93.6357, "arrivals": ["2:31 PM", "2:46 PM", "3:01 PM"] },
+        { "id": "s13", "name": "Research Park", "lat": 42.0155, "lng": -93.6460, "arrivals": ["2:34 PM", "2:49 PM", "3:04 PM"] },
+        { "id": "s14", "name": "Veterinary Medicine", "lat": 42.0185, "lng": -93.6540, "arrivals": ["2:37 PM", "2:52 PM", "3:07 PM"] }
+      ],
+      "vehicles": [
+        { "id": "v3", "lat": 42.0098, "lng": -93.6280, "heading": 315, "speed": 20 }
+      ]
+    },
+    {
+      "id": "rt3", "number": "3", "name": "Blue Route", "color": "#1565C0", "status": "active", "frequency": "12 min",
+      "stops": [
+        { "id": "s15", "name": "Schilletter Village", "lat": 42.0140, "lng": -93.6640, "arrivals": ["2:12 PM", "2:24 PM", "2:36 PM"] },
+        { "id": "s16", "name": "University Village", "lat": 42.0120, "lng": -93.6580, "arrivals": ["2:15 PM", "2:27 PM", "2:39 PM"] },
+        { "id": "s17", "name": "Jack Trice Stadium", "lat": 42.0140, "lng": -93.6358, "arrivals": ["2:18 PM", "2:30 PM", "2:42 PM"] },
+        { "id": "s18", "name": "Hilton Coliseum", "lat": 42.0219, "lng": -93.6356, "arrivals": ["2:21 PM", "2:33 PM", "2:45 PM"] },
+        { "id": "s19", "name": "Memorial Union", "lat": 42.0268, "lng": -93.6465, "arrivals": ["2:24 PM", "2:36 PM", "2:48 PM"] },
+        { "id": "s20", "name": "Design", "lat": 42.0293, "lng": -93.6438, "arrivals": ["2:26 PM", "2:38 PM", "2:50 PM"] },
+        { "id": "s21", "name": "Howe Hall", "lat": 42.0310, "lng": -93.6395, "arrivals": ["2:28 PM", "2:40 PM", "2:52 PM"] },
+        { "id": "s22", "name": "Coover Hall", "lat": 42.0299, "lng": -93.6500, "arrivals": ["2:30 PM", "2:42 PM", "2:54 PM"] }
+      ],
+      "vehicles": [
+        { "id": "v4", "lat": 42.0195, "lng": -93.6360, "heading": 0, "speed": 22 },
+        { "id": "v5", "lat": 42.0300, "lng": -93.6450, "heading": 225, "speed": 18 }
+      ]
+    },
+    {
+      "id": "rt4", "number": "6", "name": "Brown Route", "color": "#795548", "status": "active", "frequency": "20 min",
+      "stops": [
+        { "id": "s23", "name": "North Grand Mall", "lat": 42.0485, "lng": -93.6130, "arrivals": ["2:20 PM", "2:40 PM", "3:00 PM"] },
+        { "id": "s24", "name": "Grand & Duff", "lat": 42.0360, "lng": -93.6110, "arrivals": ["2:26 PM", "2:46 PM", "3:06 PM"] },
+        { "id": "s25", "name": "Ames Intermodal", "lat": 42.0234, "lng": -93.6148, "arrivals": ["2:31 PM", "2:51 PM", "3:11 PM"] },
+        { "id": "s26", "name": "Campustown", "lat": 42.0238, "lng": -93.6467, "arrivals": ["2:36 PM", "2:56 PM", "3:16 PM"] },
+        { "id": "s27", "name": "Memorial Union", "lat": 42.0268, "lng": -93.6465, "arrivals": ["2:39 PM", "2:59 PM", "3:19 PM"] }
+      ],
+      "vehicles": [
+        { "id": "v6", "lat": 42.0390, "lng": -93.6120, "heading": 180, "speed": 30 }
+      ]
+    },
+    {
+      "id": "rt5", "number": "21", "name": "Cardinal Route", "color": "#C8102E", "status": "active", "frequency": "10 min",
+      "stops": [
+        { "id": "s28", "name": "Frederiksen Court", "lat": 42.0177, "lng": -93.6565, "arrivals": ["2:10 PM", "2:20 PM", "2:30 PM"] },
+        { "id": "s29", "name": "Hawthorn Court", "lat": 42.0190, "lng": -93.6490, "arrivals": ["2:13 PM", "2:23 PM", "2:33 PM"] },
+        { "id": "s30", "name": "Campustown", "lat": 42.0238, "lng": -93.6467, "arrivals": ["2:15 PM", "2:25 PM", "2:35 PM"] },
+        { "id": "s31", "name": "Beardshear Hall", "lat": 42.0261, "lng": -93.6490, "arrivals": ["2:17 PM", "2:27 PM", "2:37 PM"] },
+        { "id": "s32", "name": "Parks Library", "lat": 42.0279, "lng": -93.6488, "arrivals": ["2:18 PM", "2:28 PM", "2:38 PM"] },
+        { "id": "s33", "name": "Memorial Union", "lat": 42.0268, "lng": -93.6465, "arrivals": ["2:20 PM", "2:30 PM", "2:40 PM"] }
+      ],
+      "vehicles": [
+        { "id": "v7", "lat": 42.0220, "lng": -93.6475, "heading": 0, "speed": 18 },
+        { "id": "v8", "lat": 42.0270, "lng": -93.6488, "heading": 200, "speed": 12 }
+      ]
+    },
+    {
+      "id": "rt6", "number": "23", "name": "Orange Route", "color": "#E65100", "status": "active", "frequency": "12 min",
+      "stops": [
+        { "id": "s34", "name": "ISU Research Park", "lat": 42.0155, "lng": -93.6460, "arrivals": ["2:12 PM", "2:24 PM", "2:36 PM"] },
+        { "id": "s35", "name": "Mortensen & S Dakota", "lat": 42.0102, "lng": -93.6540, "arrivals": ["2:16 PM", "2:28 PM", "2:40 PM"] },
+        { "id": "s36", "name": "Campustown", "lat": 42.0238, "lng": -93.6467, "arrivals": ["2:20 PM", "2:32 PM", "2:44 PM"] },
+        { "id": "s37", "name": "Friley Hall", "lat": 42.0251, "lng": -93.6516, "arrivals": ["2:22 PM", "2:34 PM", "2:46 PM"] },
+        { "id": "s38", "name": "Helser Hall", "lat": 42.0275, "lng": -93.6530, "arrivals": ["2:24 PM", "2:36 PM", "2:48 PM"] },
+        { "id": "s39", "name": "Buchanan Hall", "lat": 42.0295, "lng": -93.6538, "arrivals": ["2:26 PM", "2:38 PM", "2:50 PM"] }
+      ],
+      "vehicles": [
+        { "id": "v9", "lat": 42.0180, "lng": -93.6500, "heading": 45, "speed": 20 }
+      ]
+    },
+    {
+      "id": "rt7", "number": "25", "name": "Gold Route", "color": "#F1BE48", "status": "active", "frequency": "15 min",
+      "stops": [
+        { "id": "s40", "name": "North Ames", "lat": 42.0520, "lng": -93.6350, "arrivals": ["2:15 PM", "2:30 PM", "2:45 PM"] },
+        { "id": "s41", "name": "Stange Rd", "lat": 42.0420, "lng": -93.6420, "arrivals": ["2:19 PM", "2:34 PM", "2:49 PM"] },
+        { "id": "s42", "name": "Pammel Dr", "lat": 42.0290, "lng": -93.6540, "arrivals": ["2:23 PM", "2:38 PM", "2:53 PM"] },
+        { "id": "s43", "name": "Central Campus", "lat": 42.0268, "lng": -93.6465, "arrivals": ["2:26 PM", "2:41 PM", "2:56 PM"] },
+        { "id": "s44", "name": "Campustown", "lat": 42.0238, "lng": -93.6467, "arrivals": ["2:28 PM", "2:43 PM", "2:58 PM"] },
+        { "id": "s45", "name": "West Ames", "lat": 42.0310, "lng": -93.6700, "arrivals": ["2:32 PM", "2:47 PM", "3:02 PM"] }
+      ],
+      "vehicles": [
+        { "id": "v10", "lat": 42.0380, "lng": -93.6430, "heading": 200, "speed": 25 }
+      ]
+    },
+    {
+      "id": "rt8", "number": "9", "name": "Plum Route", "color": "#6A1B9A", "status": "inactive", "frequency": "20 min",
+      "stops": [
+        { "id": "s46", "name": "Ames Intermodal", "lat": 42.0234, "lng": -93.6148, "arrivals": [] },
+        { "id": "s47", "name": "South 16th", "lat": 42.0180, "lng": -93.6090, "arrivals": [] },
+        { "id": "s48", "name": "SE 16th", "lat": 42.0110, "lng": -93.6020, "arrivals": [] },
+        { "id": "s49", "name": "Airport Rd", "lat": 42.0048, "lng": -93.6200, "arrivals": [] },
+        { "id": "s50", "name": "South Duff", "lat": 42.0142, "lng": -93.6097, "arrivals": [] }
+      ],
+      "vehicles": []
+    }
   ],
   "alerts": [
-    { "id": "a1", "type": "delay", "route": "Green Route", "message": "5 minute delays due to construction on University Blvd.", "timestamp": "2026-03-05T08:30:00" },
-    { "id": "a2", "type": "detour", "route": "Plum Route", "message": "Plum Route suspended for the evening. Resume 6:00 AM tomorrow.", "timestamp": "2026-03-05T18:00:00" }
+    { "id": "a1", "type": "delay", "route": "Green Route", "routeColor": "#2E7D32", "message": "5 minute delays due to construction on University Blvd.", "timestamp": "2026-03-05T08:30:00" },
+    { "id": "a2", "type": "detour", "route": "Plum Route", "routeColor": "#6A1B9A", "message": "Plum Route suspended for the evening. Resume 6:00 AM tomorrow.", "timestamp": "2026-03-05T18:00:00" }
   ],
-  "favorites": ["rt5", "rt6"]
+  "favoriteRoutes": ["rt5", "rt6"],
+  "favoriteStops": ["s4", "s7", "s30"]
 }
