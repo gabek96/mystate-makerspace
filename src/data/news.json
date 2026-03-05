@@ -1,0 +1,92 @@
+{
+  "articles": [
+    {
+      "id": "n1",
+      "title": "ISU Receives $50M Grant for Renewable Energy Research",
+      "summary": "Iowa State University has been awarded a landmark $50 million federal grant to advance biofuel and wind energy research over the next five years.",
+      "category": "research",
+      "date": "2026-03-05",
+      "source": "ISU News Service",
+      "imageColor": "#C8102E",
+      "isBreaking": true
+    },
+    {
+      "id": "n2",
+      "title": "Cyclones Clinch Big 12 Regular Season Title",
+      "summary": "Iowa State men's basketball secured the Big 12 regular season championship after a dominant win in Hilton Coliseum on Saturday.",
+      "category": "sports",
+      "date": "2026-03-04",
+      "source": "Cyclones.com",
+      "imageColor": "#F1BE48",
+      "isBreaking": false
+    },
+    {
+      "id": "n3",
+      "title": "New Student Wellness Center Opens Fall 2026",
+      "summary": "Construction on the $80 million Student Wellness Center is on track for a fall 2026 opening, featuring expanded fitness, counseling, and health services.",
+      "category": "campus",
+      "date": "2026-03-03",
+      "source": "ISU News Service",
+      "imageColor": "#4CAF50",
+      "isBreaking": false
+    },
+    {
+      "id": "n4",
+      "title": "CyRide Adding Three New Electric Buses",
+      "summary": "CyRide will introduce three new electric buses to its fleet this spring as part of the Ames sustainability initiative.",
+      "category": "campus",
+      "date": "2026-03-02",
+      "source": "CyRide",
+      "imageColor": "#2196F3",
+      "isBreaking": false
+    },
+    {
+      "id": "n5",
+      "title": "Computer Science Department Ranks Top 30 Nationally",
+      "summary": "Iowa State's CS program climbed to #28 in the latest U.S. News rankings, boosted by AI and cybersecurity research.",
+      "category": "academic",
+      "date": "2026-03-01",
+      "source": "College of LAS",
+      "imageColor": "#9C27B0",
+      "isBreaking": false
+    },
+    {
+      "id": "n6",
+      "title": "Spring Break Dining Hours Announced",
+      "summary": "Most campus dining locations will operate on reduced hours during spring break (March 23–31). Seasons and UDCC will remain open.",
+      "category": "campus",
+      "date": "2026-02-28",
+      "source": "ISU Dining",
+      "imageColor": "#FF9800",
+      "isBreaking": false
+    },
+    {
+      "id": "n7",
+      "title": "Veishea 2026 Planning Kicks Off",
+      "summary": "Student Government announced a community festival for spring, featuring concerts, food, and carnival rides on central campus.",
+      "category": "events",
+      "date": "2026-02-27",
+      "source": "Student Government",
+      "imageColor": "#E91E63",
+      "isBreaking": false
+    },
+    {
+      "id": "n8",
+      "title": "Engineering Students Win National Robotics Competition",
+      "summary": "A team of ISU mechanical and electrical engineering students took first place at the National Robotics Challenge in Detroit.",
+      "category": "academic",
+      "date": "2026-02-25",
+      "source": "College of Engineering",
+      "imageColor": "#C8102E",
+      "isBreaking": false
+    }
+  ],
+  "categories": [
+    { "id": "all", "label": "All" },
+    { "id": "campus", "label": "Campus" },
+    { "id": "sports", "label": "Sports" },
+    { "id": "academic", "label": "Academic" },
+    { "id": "research", "label": "Research" },
+    { "id": "events", "label": "Events" }
+  ]
+}

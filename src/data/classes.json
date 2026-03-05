@@ -1,7 +1,43 @@
 {
   "today": [
-    { "id": "c1", "name": "ME 270 - Engineering Dynamics", "time": "10:00 AM - 10:50 AM", "room": "Hoover 1213", "color": "#C8102E" },
-    { "id": "c2", "name": "CPRE 281 - Digital Logic", "time": "12:40 PM - 1:30 PM", "room": "Coover 2245", "color": "#F1BE48" },
-    { "id": "c3", "name": "ENGL 250 - Written Communication", "time": "2:10 PM - 3:00 PM", "room": "Ross 124", "color": "#4CAF50" }
-  ]
+    { "id": "c1", "name": "ME 270 - Engineering Dynamics", "time": "10:00 AM - 10:50 AM", "room": "Hoover 1213", "color": "#C8102E", "instructor": "Dr. Chen", "type": "Lecture" },
+    { "id": "c2", "name": "CPRE 281 - Digital Logic", "time": "12:40 PM - 1:30 PM", "room": "Coover 2245", "color": "#F1BE48", "instructor": "Dr. Patel", "type": "Lecture" },
+    { "id": "c3", "name": "ENGL 250 - Written Communication", "time": "2:10 PM - 3:00 PM", "room": "Ross 124", "color": "#4CAF50", "instructor": "Prof. Williams", "type": "Discussion" }
+  ],
+  "week": {
+    "Monday": [
+      { "id": "c1", "name": "ME 270 - Engineering Dynamics", "time": "10:00 AM - 10:50 AM", "room": "Hoover 1213", "color": "#C8102E", "instructor": "Dr. Chen", "type": "Lecture" },
+      { "id": "c2", "name": "CPRE 281 - Digital Logic", "time": "12:40 PM - 1:30 PM", "room": "Coover 2245", "color": "#F1BE48", "instructor": "Dr. Patel", "type": "Lecture" },
+      { "id": "c3", "name": "ENGL 250 - Written Communication", "time": "2:10 PM - 3:00 PM", "room": "Ross 124", "color": "#4CAF50", "instructor": "Prof. Williams", "type": "Discussion" }
+    ],
+    "Tuesday": [
+      { "id": "c4", "name": "MATH 267 - Differential Equations", "time": "9:00 AM - 9:50 AM", "room": "Carver 0001", "color": "#9C27B0", "instructor": "Dr. Roberts", "type": "Lecture" },
+      { "id": "c5", "name": "CPRE 281 - Digital Logic Lab", "time": "2:10 PM - 5:00 PM", "room": "Coover 3050", "color": "#F1BE48", "instructor": "TA: Sarah Kim", "type": "Lab" }
+    ],
+    "Wednesday": [
+      { "id": "c1", "name": "ME 270 - Engineering Dynamics", "time": "10:00 AM - 10:50 AM", "room": "Hoover 1213", "color": "#C8102E", "instructor": "Dr. Chen", "type": "Lecture" },
+      { "id": "c2", "name": "CPRE 281 - Digital Logic", "time": "12:40 PM - 1:30 PM", "room": "Coover 2245", "color": "#F1BE48", "instructor": "Dr. Patel", "type": "Lecture" },
+      { "id": "c3", "name": "ENGL 250 - Written Communication", "time": "2:10 PM - 3:00 PM", "room": "Ross 124", "color": "#4CAF50", "instructor": "Prof. Williams", "type": "Discussion" }
+    ],
+    "Thursday": [
+      { "id": "c4", "name": "MATH 267 - Differential Equations", "time": "9:00 AM - 9:50 AM", "room": "Carver 0001", "color": "#9C27B0", "instructor": "Dr. Roberts", "type": "Lecture" },
+      { "id": "c6", "name": "ME 270 - Dynamics Recitation", "time": "3:10 PM - 4:00 PM", "room": "Hoover 2228", "color": "#C8102E", "instructor": "TA: James Lee", "type": "Recitation" }
+    ],
+    "Friday": [
+      { "id": "c1", "name": "ME 270 - Engineering Dynamics", "time": "10:00 AM - 10:50 AM", "room": "Hoover 1213", "color": "#C8102E", "instructor": "Dr. Chen", "type": "Lecture" },
+      { "id": "c2", "name": "CPRE 281 - Digital Logic", "time": "12:40 PM - 1:30 PM", "room": "Coover 2245", "color": "#F1BE48", "instructor": "Dr. Patel", "type": "Lecture" }
+    ]
+  },
+  "assignments": [
+    { "id": "a1", "class": "ME 270", "title": "Problem Set 7", "due": "2026-03-07", "color": "#C8102E", "status": "pending" },
+    { "id": "a2", "class": "CPRE 281", "title": "Lab 5 Report", "due": "2026-03-08", "color": "#F1BE48", "status": "pending" },
+    { "id": "a3", "class": "ENGL 250", "title": "Research Paper Draft", "due": "2026-03-12", "color": "#4CAF50", "status": "pending" },
+    { "id": "a4", "class": "MATH 267", "title": "WebAssign Ch. 4", "due": "2026-03-06", "color": "#9C27B0", "status": "due-soon" },
+    { "id": "a5", "class": "ME 270", "title": "Exam 2 Study Guide", "due": "2026-03-14", "color": "#C8102E", "status": "pending" }
+  ],
+  "gpa": {
+    "current": 3.42,
+    "semester": 3.55,
+    "credits": 15
+  }
 }

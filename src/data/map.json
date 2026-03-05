@@ -1,0 +1,33 @@
+{
+  "locations": [
+    { "id": "m1", "name": "Parks Library", "category": "academic", "lat": 42.0277, "lng": -93.6488, "building": "Parks Library" },
+    { "id": "m2", "name": "Memorial Union", "category": "student-life", "lat": 42.0235, "lng": -93.6455, "building": "Memorial Union" },
+    { "id": "m3", "name": "Hilton Coliseum", "category": "athletics", "lat": 42.0254, "lng": -93.6368, "building": "Hilton Coliseum" },
+    { "id": "m4", "name": "Howe Hall", "category": "academic", "lat": 42.0258, "lng": -93.6562, "building": "Howe Hall" },
+    { "id": "m5", "name": "Coover Hall", "category": "academic", "lat": 42.0262, "lng": -93.6554, "building": "Coover Hall" },
+    { "id": "m6", "name": "Beardshear Hall", "category": "administrative", "lat": 42.0264, "lng": -93.6481, "building": "Beardshear Hall" },
+    { "id": "m7", "name": "State Gym / Rec Center", "category": "recreation", "lat": 42.0241, "lng": -93.6372, "building": "State Gymnasium" },
+    { "id": "m8", "name": "Thielen Student Health", "category": "health", "lat": 42.0226, "lng": -93.6437, "building": "Thielen Student Health" },
+    { "id": "m9", "name": "Black Engineering", "category": "academic", "lat": 42.0252, "lng": -93.6505, "building": "Black Engineering" },
+    { "id": "m10", "name": "Friley Hall", "category": "housing", "lat": 42.0209, "lng": -93.6465, "building": "Friley Hall" },
+    { "id": "m11", "name": "Jack Trice Stadium", "category": "athletics", "lat": 42.0140, "lng": -93.6356, "building": "Jack Trice Stadium" },
+    { "id": "m12", "name": "Gerdin Business Building", "category": "academic", "lat": 42.0273, "lng": -93.6427, "building": "Gerdin Business Building" },
+    { "id": "m13", "name": "Marston Hall", "category": "academic", "lat": 42.0256, "lng": -93.6523, "building": "Marston Hall" },
+    { "id": "m14", "name": "Durham Center", "category": "academic", "lat": 42.0268, "lng": -93.6538, "building": "Durham Center" },
+    { "id": "m15", "name": "Carver Hall", "category": "academic", "lat": 42.0282, "lng": -93.6505, "building": "Carver Hall" },
+    { "id": "m16", "name": "Seasons Marketplace", "category": "dining", "lat": 42.0233, "lng": -93.6471, "building": "Seasons Marketplace" },
+    { "id": "m17", "name": "UDCC", "category": "dining", "lat": 42.0215, "lng": -93.6494, "building": "Union Drive Community Center" },
+    { "id": "m18", "name": "Lied Rec Center", "category": "recreation", "lat": 42.0239, "lng": -93.6385, "building": "Lied Recreation Athletic Center" }
+  ],
+  "categories": [
+    { "id": "all", "label": "All", "color": "#607D8B" },
+    { "id": "academic", "label": "Academic", "color": "#C8102E" },
+    { "id": "dining", "label": "Dining", "color": "#4CAF50" },
+    { "id": "housing", "label": "Housing", "color": "#FF9800" },
+    { "id": "athletics", "label": "Athletics", "color": "#F1BE48" },
+    { "id": "student-life", "label": "Student Life", "color": "#9C27B0" },
+    { "id": "health", "label": "Health", "color": "#E91E63" },
+    { "id": "recreation", "label": "Recreation", "color": "#2196F3" },
+    { "id": "administrative", "label": "Admin", "color": "#607D8B" }
+  ]
+}

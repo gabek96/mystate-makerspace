@@ -1,0 +1,82 @@
+{
+  "fairs": [
+    {
+      "id": "f1",
+      "name": "Spring Engineering Career Fair",
+      "date": "2026-03-10",
+      "time": "10:00 AM - 3:00 PM",
+      "location": "Hilton Coliseum",
+      "type": "career",
+      "description": "Connect with top engineering employers. Over 200 companies attending. Bring resumes and dress professionally.",
+      "employers": 215,
+      "isFeatured": true,
+      "tags": ["Engineering", "Technology", "Manufacturing"]
+    },
+    {
+      "id": "f2",
+      "name": "Business, Industry & Technology Career Fair",
+      "date": "2026-03-11",
+      "time": "10:00 AM - 3:00 PM",
+      "location": "Hilton Coliseum",
+      "type": "career",
+      "description": "Career fair for all majors with emphasis on business, technology, and liberal arts careers.",
+      "employers": 175,
+      "isFeatured": true,
+      "tags": ["Business", "IT", "Liberal Arts", "All Majors"]
+    },
+    {
+      "id": "f3",
+      "name": "People to People Career Fair",
+      "date": "2026-03-12",
+      "time": "12:00 PM - 4:00 PM",
+      "location": "Memorial Union - Great Hall",
+      "type": "career",
+      "description": "Focused on human services, education, government, and non-profit careers.",
+      "employers": 80,
+      "isFeatured": false,
+      "tags": ["Education", "Government", "Non-Profit"]
+    },
+    {
+      "id": "f4",
+      "name": "Study Abroad Fair",
+      "date": "2026-03-18",
+      "time": "10:00 AM - 2:00 PM",
+      "location": "Memorial Union - South Ballroom",
+      "type": "academic",
+      "description": "Explore 100+ study abroad programs. Talk to advisors and returning students.",
+      "employers": 0,
+      "isFeatured": false,
+      "tags": ["Study Abroad", "International"]
+    },
+    {
+      "id": "f5",
+      "name": "Graduate School Fair",
+      "date": "2026-04-02",
+      "time": "3:00 PM - 6:00 PM",
+      "location": "Scheman Building",
+      "type": "academic",
+      "description": "Meet representatives from grad programs across the country. Workshops on applications and funding.",
+      "employers": 0,
+      "isFeatured": false,
+      "tags": ["Graduate School", "Research"]
+    },
+    {
+      "id": "f6",
+      "name": "Design Expo",
+      "date": "2026-04-15",
+      "time": "1:00 PM - 5:00 PM",
+      "location": "College of Design Atrium",
+      "type": "showcase",
+      "description": "Senior design students showcase capstone projects. Networking with industry sponsors.",
+      "employers": 30,
+      "isFeatured": false,
+      "tags": ["Design", "Architecture", "Portfolio"]
+    }
+  ],
+  "types": [
+    { "id": "all", "label": "All Fairs" },
+    { "id": "career", "label": "Career Fairs" },
+    { "id": "academic", "label": "Academic" },
+    { "id": "showcase", "label": "Showcases" }
+  ]
+}

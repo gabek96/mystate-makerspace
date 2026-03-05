@@ -1,0 +1,122 @@
+{
+  "upcoming": [
+    {
+      "id": "e1",
+      "title": "Spring Career Fair",
+      "date": "2026-03-10",
+      "time": "10:00 AM - 3:00 PM",
+      "location": "Hilton Coliseum",
+      "category": "career",
+      "description": "Connect with over 300 employers at Iowa State's largest career fair. Business professional attire recommended.",
+      "organizer": "Career Services",
+      "isFeatured": true
+    },
+    {
+      "id": "e2",
+      "title": "Cyclone Cinema: Dune Part Two",
+      "date": "2026-03-06",
+      "time": "7:00 PM & 10:00 PM",
+      "location": "Carver 101",
+      "category": "entertainment",
+      "description": "Free movie screening for ISU students. Bring your ISU Card for entry.",
+      "organizer": "Student Union Board",
+      "isFeatured": false
+    },
+    {
+      "id": "e3",
+      "title": "Hackathon: HackISU",
+      "date": "2026-03-14",
+      "time": "6:00 PM - Sunday 12:00 PM",
+      "location": "Howe Hall",
+      "category": "academic",
+      "description": "36-hour hackathon with prizes, food, and workshops. All skill levels welcome.",
+      "organizer": "HackISU Club",
+      "isFeatured": true
+    },
+    {
+      "id": "e4",
+      "title": "Cyclone Basketball vs Kansas",
+      "date": "2026-03-07",
+      "time": "1:00 PM",
+      "location": "Hilton Coliseum",
+      "category": "sports",
+      "description": "Men's basketball Big 12 conference game. Student section opens 2 hours before tip-off.",
+      "organizer": "ISU Athletics",
+      "isFeatured": true
+    },
+    {
+      "id": "e5",
+      "title": "Engineering Career Panel",
+      "date": "2026-03-11",
+      "time": "5:30 PM - 7:00 PM",
+      "location": "Marston 107",
+      "category": "career",
+      "description": "Alumni from top engineering firms share career advice and answer questions.",
+      "organizer": "College of Engineering",
+      "isFeatured": false
+    },
+    {
+      "id": "e6",
+      "title": "SUB Concert: Local Artists Night",
+      "date": "2026-03-08",
+      "time": "8:00 PM",
+      "location": "M-Shop, Memorial Union",
+      "category": "entertainment",
+      "description": "Live music featuring local Ames artists. Free admission with ISU Card.",
+      "organizer": "Student Union Board",
+      "isFeatured": false
+    },
+    {
+      "id": "e7",
+      "title": "Intramural Volleyball Registration",
+      "date": "2026-03-05",
+      "time": "All Day",
+      "location": "Online Registration",
+      "category": "sports",
+      "description": "Last day to register your team for spring intramural volleyball. Sign up on IMLeagues.",
+      "organizer": "Rec Services",
+      "isFeatured": false
+    },
+    {
+      "id": "e8",
+      "title": "Research Symposium",
+      "date": "2026-03-18",
+      "time": "9:00 AM - 4:00 PM",
+      "location": "Scheman Building",
+      "category": "academic",
+      "description": "Undergraduate and graduate students present research posters and oral presentations.",
+      "organizer": "Office of Research",
+      "isFeatured": false
+    },
+    {
+      "id": "e9",
+      "title": "Clubs & Org Showcase",
+      "date": "2026-03-12",
+      "time": "11:00 AM - 2:00 PM",
+      "location": "Great Hall, Memorial Union",
+      "category": "social",
+      "description": "Explore 100+ student organizations. Free food, swag, and sign-ups.",
+      "organizer": "Student Activities Center",
+      "isFeatured": false
+    },
+    {
+      "id": "e10",
+      "title": "Sustainability Fair",
+      "date": "2026-03-20",
+      "time": "10:00 AM - 2:00 PM",
+      "location": "Central Campus",
+      "category": "social",
+      "description": "Learn about sustainability efforts on campus. Giveaways, food trucks, and interactive demos.",
+      "organizer": "Live Green! Initiative",
+      "isFeatured": false
+    }
+  ],
+  "categories": [
+    { "id": "all", "label": "All Events" },
+    { "id": "academic", "label": "Academic" },
+    { "id": "career", "label": "Career" },
+    { "id": "sports", "label": "Sports" },
+    { "id": "entertainment", "label": "Entertainment" },
+    { "id": "social", "label": "Social" }
+  ]
+}

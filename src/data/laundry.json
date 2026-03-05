@@ -1,0 +1,98 @@
+{
+  "buildings": [
+    {
+      "id": "l1",
+      "name": "Friley Hall",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 4, "total": 8, "estimatedWait": null },
+        "dryers": { "available": 2, "total": 8, "estimatedWait": "25 min" }
+      },
+      "floor": "Basement",
+      "lastUpdated": "2 min ago"
+    },
+    {
+      "id": "l2",
+      "name": "Helser Hall",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 3, "total": 6, "estimatedWait": null },
+        "dryers": { "available": 5, "total": 6, "estimatedWait": null }
+      },
+      "floor": "Basement",
+      "lastUpdated": "1 min ago"
+    },
+    {
+      "id": "l3",
+      "name": "Maple-Willow-Larch",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 0, "total": 10, "estimatedWait": "35 min" },
+        "dryers": { "available": 1, "total": 10, "estimatedWait": "20 min" }
+      },
+      "floor": "Ground Floor",
+      "lastUpdated": "3 min ago"
+    },
+    {
+      "id": "l4",
+      "name": "Buchanan Hall",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 2, "total": 4, "estimatedWait": null },
+        "dryers": { "available": 3, "total": 4, "estimatedWait": null }
+      },
+      "floor": "Basement",
+      "lastUpdated": "5 min ago"
+    },
+    {
+      "id": "l5",
+      "name": "Wallace-Wilson",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 1, "total": 6, "estimatedWait": "15 min" },
+        "dryers": { "available": 0, "total": 6, "estimatedWait": "40 min" }
+      },
+      "floor": "Basement",
+      "lastUpdated": "1 min ago"
+    },
+    {
+      "id": "l6",
+      "name": "Eaton Hall",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 3, "total": 4, "estimatedWait": null },
+        "dryers": { "available": 4, "total": 4, "estimatedWait": null }
+      },
+      "floor": "Ground Floor",
+      "lastUpdated": "2 min ago"
+    },
+    {
+      "id": "l7",
+      "name": "Martin Hall",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 2, "total": 4, "estimatedWait": null },
+        "dryers": { "available": 1, "total": 4, "estimatedWait": "10 min" }
+      },
+      "floor": "Basement",
+      "lastUpdated": "4 min ago"
+    },
+    {
+      "id": "l8",
+      "name": "Geoffrey Hall (SUV)",
+      "type": "residence",
+      "machines": {
+        "washers": { "available": 5, "total": 6, "estimatedWait": null },
+        "dryers": { "available": 4, "total": 6, "estimatedWait": null }
+      },
+      "floor": "1st Floor",
+      "lastUpdated": "1 min ago"
+    }
+  ],
+  "myBuilding": "l1",
+  "notifications": {
+    "enabled": true,
+    "notifyWhenDone": true,
+    "notifyWhenAvailable": true
+  }
+}

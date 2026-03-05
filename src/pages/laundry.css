@@ -1,0 +1,69 @@
+/* ============================================
+   Laundry Page Styles
+   ============================================ */
+
+.page-laundry .scroll-content { padding-bottom: 100px; }
+
+.laundry-my { padding: var(--space-md) var(--space-lg); }
+
+.laundry-my-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--cardinal);
+  padding: var(--space-lg);
+}
+
+.lmc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); }
+.lmc-name { font-size: var(--text-base); font-weight: 800; color: var(--text-primary); }
+.lmc-floor { font-size: var(--text-xs); color: var(--text-secondary); }
+
+.lmc-machines { display: flex; gap: var(--space-xl); }
+
+.lmc-group { flex: 1; }
+.lmc-icon { margin-bottom: var(--space-xs); }
+.lmc-label { font-size: var(--text-xs); font-weight: 600; color: var(--text-secondary); }
+.lmc-count { font-size: 1.5rem; font-weight: 800; margin: 2px 0; }
+
+.lmc-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: var(--space-xs) 0;
+}
+
+.lmc-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
+.lmc-wait { font-size: 11px; color: var(--text-tertiary); }
+.lmc-updated { font-size: 10px; color: var(--text-tertiary); margin-top: var(--space-md); text-align: right; }
+
+.laundry-list { padding: var(--space-sm) var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); }
+
+.laundry-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+  padding: var(--space-md);
+}
+
+.lc-name { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); }
+
+.lc-machines { display: flex; gap: var(--space-lg); }
+
+.lc-machine { display: flex; align-items: center; gap: var(--space-sm); }
+.lc-type { font-size: var(--text-xs); color: var(--text-secondary); }
+.lc-avail { font-size: var(--text-sm); font-weight: 800; }
+
+.lc-wait-info {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.lc-wait-info span {
+  font-size: 11px;
+  color: #FF9800;
+  font-weight: 600;
+}
+
+.lc-updated { font-size: 10px; color: var(--text-tertiary); margin-top: var(--space-xs); }

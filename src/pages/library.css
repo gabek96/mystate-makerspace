@@ -1,0 +1,136 @@
+/* ============================================
+   Library Page Styles
+   ============================================ */
+
+.page-library .scroll-content { padding-bottom: 100px; }
+
+.lib-quick-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.lib-quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-xs);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-primary);
+}
+
+.lql-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(200, 16, 46, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lib-quick-link span { font-size: 10px; font-weight: 600; color: var(--text-secondary); text-align: center; }
+
+.lib-tabs {
+  display: flex;
+  gap: var(--space-xs);
+  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.lib-tab {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--duration-fast);
+}
+
+.lib-tab.active {
+  background: #795548;
+  color: white;
+  border-color: #795548;
+}
+
+.lib-list { padding: 0 var(--space-lg); display: flex; flex-direction: column; gap: var(--space-md); }
+
+.lib-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+  padding: var(--space-lg);
+}
+
+.lib-card.main { border-color: #795548; border-width: 2px; }
+
+.lib-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-sm); }
+.lib-card-name { font-size: var(--text-base); font-weight: 800; color: var(--text-primary); }
+.lib-card-address { font-size: var(--text-xs); color: var(--text-secondary); }
+
+.lib-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.lib-status-badge.open { background: #E8F5E9; color: #2E7D32; }
+.lib-status-badge.closed { background: #FFEBEE; color: #C62828; }
+[data-theme="dark"] .lib-status-badge.open { background: rgba(46, 125, 50, 0.2); }
+[data-theme="dark"] .lib-status-badge.closed { background: rgba(198, 40, 40, 0.2); }
+
+.lib-card-hours {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.lib-card-resources { display: flex; gap: var(--space-lg); margin-bottom: var(--space-md); }
+
+.lib-resource { display: flex; flex-direction: column; }
+.lib-res-label { font-size: 11px; color: var(--text-tertiary); }
+.lib-res-value { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); }
+
+.lib-card-features { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+
+.lib-feature-chip {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.lib-account { padding: 0 var(--space-lg); display: flex; flex-direction: column; gap: var(--space-md); }
+
+.lib-account-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+  padding: var(--space-lg);
+}
+
+.la-header { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-md); }
+.la-balance { font-size: 2rem; font-weight: 800; color: var(--cardinal); }
+
+.la-book {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.la-book:last-child { border-bottom: none; }
+.la-book-title { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); }
+.la-book-author { font-size: var(--text-xs); color: var(--text-secondary); }
+.la-book-due { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; }
+.la-hold-status { font-size: var(--text-xs); color: #4CAF50; font-weight: 600; margin-top: 2px; }

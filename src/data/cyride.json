@@ -2,5 +2,20 @@
   "nearby": [
     { "id": "r1", "number": "23", "name": "Orange Route", "stop": "Friley Hall", "eta": 3, "color": "#E53935" },
     { "id": "r2", "number": "6", "name": "Blue Route", "stop": "Memorial Union", "eta": 7, "color": "#1E88E5" }
-  ]
+  ],
+  "routes": [
+    { "id": "rt1", "number": "1", "name": "Red Route", "color": "#C62828", "status": "active", "frequency": "15 min", "stops": ["Ames Intermodal", "Lincoln Way & Beach", "Campustown", "Memorial Union", "Beardshear", "Parks Library", "Friley Hall", "Frederiksen Court"] },
+    { "id": "rt2", "number": "2", "name": "Green Route", "color": "#2E7D32", "status": "active", "frequency": "15 min", "stops": ["Ames Intermodal", "South Duff", "Airport Rd", "University Blvd", "Research Park", "Veterinary Medicine"] },
+    { "id": "rt3", "number": "3", "name": "Blue Route", "color": "#1565C0", "status": "active", "frequency": "12 min", "stops": ["Schilletter Village", "University Village", "Jack Trice Stadium", "Hilton Coliseum", "Memorial Union", "Design", "Howe Hall", "Coover Hall"] },
+    { "id": "rt4", "number": "6", "name": "Brown Route", "color": "#795548", "status": "active", "frequency": "20 min", "stops": ["North Grand Mall", "Grand & Duff", "Ames Intermodal", "Campustown", "Memorial Union"] },
+    { "id": "rt5", "number": "21", "name": "Cardinal Route", "color": "#C8102E", "status": "active", "frequency": "10 min", "stops": ["Frederiksen Court", "Hawthorn Court", "Campustown", "Beardshear", "Parks Library", "Memorial Union"] },
+    { "id": "rt6", "number": "23", "name": "Orange Route", "color": "#E65100", "status": "active", "frequency": "12 min", "stops": ["ISU Research Park", "Mortensen & S Dakota", "Campustown", "Friley Hall", "Helser Hall", "Buchanan Hall"] },
+    { "id": "rt7", "number": "25", "name": "Gold Route", "color": "#F1BE48", "status": "active", "frequency": "15 min", "stops": ["North Ames", "Stange Rd", "Pammel Dr", "Central Campus", "Campustown", "West Ames"] },
+    { "id": "rt8", "number": "9", "name": "Plum Route", "color": "#6A1B9A", "status": "inactive", "frequency": "20 min", "stops": ["Ames Intermodal", "South 16th", "SE 16th", "Airport Rd", "South Duff"] }
+  ],
+  "alerts": [
+    { "id": "a1", "type": "delay", "route": "Green Route", "message": "5 minute delays due to construction on University Blvd.", "timestamp": "2026-03-05T08:30:00" },
+    { "id": "a2", "type": "detour", "route": "Plum Route", "message": "Plum Route suspended for the evening. Resume 6:00 AM tomorrow.", "timestamp": "2026-03-05T18:00:00" }
+  ],
+  "favorites": ["rt5", "rt6"]
 }

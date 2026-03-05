@@ -1,0 +1,128 @@
+/* ============================================
+   Campus Map Page Styles
+   ============================================ */
+
+.page-map .scroll-content { padding-bottom: 100px; }
+
+.map-placeholder {
+  margin: var(--space-md) var(--space-lg);
+  height: 200px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(200, 16, 46, 0.05), rgba(241, 190, 72, 0.05));
+}
+
+.map-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  opacity: 0.3;
+}
+
+.map-pin {
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-pin svg { transform: rotate(45deg); }
+
+.map-overlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.map-overlay span { font-size: var(--text-xs); color: var(--text-tertiary); font-weight: 600; }
+
+.map-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0 var(--space-lg) var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+}
+
+.map-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.map-search input::placeholder { color: var(--text-tertiary); }
+
+.map-filters {
+  display: flex;
+  gap: var(--space-xs);
+  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-md);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.map-filters::-webkit-scrollbar { display: none; }
+
+.map-filter {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: all var(--duration-fast);
+}
+
+.map-filter.active { color: white; }
+
+.map-locations {
+  padding: 0 var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.map-loc-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+}
+
+.mlc-pin {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mlc-info { flex: 1; min-width: 0; }
+.mlc-name { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); }
+.mlc-building { font-size: var(--text-xs); color: var(--text-secondary); }
+.mlc-category { font-size: 10px; font-weight: 700; white-space: nowrap; }

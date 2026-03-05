@@ -1,0 +1,124 @@
+{
+  "contacts": [
+    {
+      "id": "d1",
+      "name": "Academic Advising Center",
+      "category": "academic",
+      "phone": "(515) 294-5242",
+      "email": "advising@iastate.edu",
+      "building": "Bessey Hall 10",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d2",
+      "name": "Financial Aid Office",
+      "category": "financial",
+      "phone": "(515) 294-2223",
+      "email": "financialaid@iastate.edu",
+      "building": "Beardshear Hall 0676",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d3",
+      "name": "IT Help Desk (Solution Center)",
+      "category": "technology",
+      "phone": "(515) 294-4000",
+      "email": "solution@iastate.edu",
+      "building": "195 Durham Center",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d4",
+      "name": "Student Health Center (Thielen)",
+      "category": "health",
+      "phone": "(515) 294-5801",
+      "email": null,
+      "building": "Thielen Student Health Center",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d5",
+      "name": "Counseling Services",
+      "category": "health",
+      "phone": "(515) 294-5056",
+      "email": "counseling@iastate.edu",
+      "building": "Student Services Building 3rd Floor",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d6",
+      "name": "Registrar's Office",
+      "category": "academic",
+      "phone": "(515) 294-1840",
+      "email": "registrar@iastate.edu",
+      "building": "Enrollment Services Center 0830",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d7",
+      "name": "Department of Residence",
+      "category": "housing",
+      "phone": "(515) 294-2900",
+      "email": "housing@iastate.edu",
+      "building": "1220 Friley Hall",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d8",
+      "name": "ISU Police Department (Non-Emergency)",
+      "category": "safety",
+      "phone": "(515) 294-4428",
+      "email": null,
+      "building": "Armory Building",
+      "hours": "24/7"
+    },
+    {
+      "id": "d9",
+      "name": "Recreation Services",
+      "category": "recreation",
+      "phone": "(515) 294-4980",
+      "email": "recserv@iastate.edu",
+      "building": "State Gym",
+      "hours": "M-F 5:30 AM - 11:00 PM"
+    },
+    {
+      "id": "d10",
+      "name": "Career Services",
+      "category": "career",
+      "phone": "(515) 294-1023",
+      "email": "career@iastate.edu",
+      "building": "1340 Palmer HDFS Building",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    },
+    {
+      "id": "d11",
+      "name": "Parking Division",
+      "category": "transportation",
+      "phone": "(515) 294-5312",
+      "email": "parking@iastate.edu",
+      "building": "27 General Services Building",
+      "hours": "M-F 7:30 AM - 4:30 PM"
+    },
+    {
+      "id": "d12",
+      "name": "Dean of Students Office",
+      "category": "academic",
+      "phone": "(515) 294-1020",
+      "email": "deanofstudents@iastate.edu",
+      "building": "1010 Student Services Building",
+      "hours": "M-F 8:00 AM - 5:00 PM"
+    }
+  ],
+  "categories": [
+    { "id": "all", "label": "All" },
+    { "id": "academic", "label": "Academic" },
+    { "id": "health", "label": "Health" },
+    { "id": "financial", "label": "Financial" },
+    { "id": "technology", "label": "Technology" },
+    { "id": "housing", "label": "Housing" },
+    { "id": "safety", "label": "Safety" },
+    { "id": "career", "label": "Career" },
+    { "id": "recreation", "label": "Recreation" },
+    { "id": "transportation", "label": "Transportation" }
+  ]
+}

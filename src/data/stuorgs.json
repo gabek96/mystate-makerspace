@@ -1,0 +1,123 @@
+{
+  "organizations": [
+    {
+      "id": "org1",
+      "name": "HackISU",
+      "category": "technology",
+      "members": 180,
+      "description": "Iowa State's premier hackathon organizing club. We host semesterly hackathons and weekly coding workshops.",
+      "meetingTime": "Thursdays 6:00 PM",
+      "meetingLocation": "Howe Hall 1230",
+      "isJoined": true,
+      "color": "#C8102E"
+    },
+    {
+      "id": "org2",
+      "name": "Cyclone Robotics",
+      "category": "technology",
+      "members": 65,
+      "description": "Design and build robots for national competitions. Subteams for mechanical, electrical, and software.",
+      "meetingTime": "Mondays & Wednesdays 5:00 PM",
+      "meetingLocation": "Black Engineering 2205",
+      "isJoined": true,
+      "color": "#F1BE48"
+    },
+    {
+      "id": "org3",
+      "name": "Student Government",
+      "category": "government",
+      "members": 45,
+      "description": "Represent the student body and advocate for student interests to university administration.",
+      "meetingTime": "Wednesdays 7:00 PM",
+      "meetingLocation": "Memorial Union - Pioneer Room",
+      "isJoined": false,
+      "color": "#C8102E"
+    },
+    {
+      "id": "org4",
+      "name": "Outdoor Recreation Club",
+      "category": "recreation",
+      "members": 240,
+      "description": "Hiking, camping, climbing, kayaking and more. Trips every other weekend during the semester.",
+      "meetingTime": "Tuesdays 7:00 PM",
+      "meetingLocation": "State Gym 1150",
+      "isJoined": false,
+      "color": "#4CAF50"
+    },
+    {
+      "id": "org5",
+      "name": "Engineers Without Borders",
+      "category": "service",
+      "members": 85,
+      "description": "Engineering solutions for developing communities. Current projects in Guatemala and Ghana.",
+      "meetingTime": "Wednesdays 6:00 PM",
+      "meetingLocation": "Town Engineering 0021",
+      "isJoined": false,
+      "color": "#2196F3"
+    },
+    {
+      "id": "org6",
+      "name": "ISU Dance Marathon",
+      "category": "service",
+      "members": 320,
+      "description": "Year-long fundraising effort benefiting the University of Iowa Stead Family Children's Hospital.",
+      "meetingTime": "Varies by committee",
+      "meetingLocation": "Memorial Union",
+      "isJoined": false,
+      "color": "#FF9800"
+    },
+    {
+      "id": "org7",
+      "name": "Association of Business Students",
+      "category": "professional",
+      "members": 150,
+      "description": "Networking events, company visits, and professional development for Ivy College of Business students.",
+      "meetingTime": "Thursdays 5:30 PM",
+      "meetingLocation": "Gerdin 1148",
+      "isJoined": false,
+      "color": "#795548"
+    },
+    {
+      "id": "org8",
+      "name": "ISU Esports",
+      "category": "recreation",
+      "members": 200,
+      "description": "Competitive and casual gaming community. Varsity teams in League of Legends, Valorant, and Rocket League.",
+      "meetingTime": "Daily open hours",
+      "meetingLocation": "Friley Hall Esports Arena",
+      "isJoined": true,
+      "color": "#9C27B0"
+    },
+    {
+      "id": "org9",
+      "name": "Society of Women Engineers",
+      "category": "professional",
+      "members": 275,
+      "description": "Empowering women in engineering through mentorship, networking, and outreach.",
+      "meetingTime": "Mondays 6:00 PM",
+      "meetingLocation": "Marston 107",
+      "isJoined": false,
+      "color": "#E91E63"
+    },
+    {
+      "id": "org10",
+      "name": "Cyclone Marching Band",
+      "category": "arts",
+      "members": 360,
+      "description": "The Spirit of Iowa State! Performing at all home football games and special events.",
+      "meetingTime": "M-F 4:00 PM (fall)",
+      "meetingLocation": "Music Hall",
+      "isJoined": false,
+      "color": "#C8102E"
+    }
+  ],
+  "categories": [
+    { "id": "all", "label": "All" },
+    { "id": "technology", "label": "Technology" },
+    { "id": "professional", "label": "Professional" },
+    { "id": "service", "label": "Service" },
+    { "id": "recreation", "label": "Recreation" },
+    { "id": "government", "label": "Government" },
+    { "id": "arts", "label": "Arts" }
+  ]
+}

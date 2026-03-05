@@ -1,0 +1,73 @@
+{
+  "libraries": [
+    {
+      "id": "lib1",
+      "name": "Parks Library",
+      "shortName": "Parks",
+      "isMain": true,
+      "hours": "7:30 AM - 2:00 AM",
+      "status": "open",
+      "address": "701 Morrill Rd",
+      "floors": 5,
+      "studyRooms": { "available": 3, "total": 24 },
+      "computers": { "available": 18, "total": 60 },
+      "features": ["Printing", "Scanning", "Study Rooms", "Café", "Quiet Floors", "24-hr Study Area"]
+    },
+    {
+      "id": "lib2",
+      "name": "Design Reading Room",
+      "shortName": "Design",
+      "isMain": false,
+      "hours": "8:00 AM - 10:00 PM",
+      "status": "open",
+      "address": "College of Design",
+      "floors": 1,
+      "studyRooms": { "available": 1, "total": 4 },
+      "computers": { "available": 5, "total": 12 },
+      "features": ["Printing", "Design Collections", "Quiet Study"]
+    },
+    {
+      "id": "lib3",
+      "name": "Veterinary Medical Library",
+      "shortName": "Vet Med",
+      "isMain": false,
+      "hours": "8:00 AM - 9:00 PM",
+      "status": "open",
+      "address": "1800 Christensen Dr",
+      "floors": 1,
+      "studyRooms": { "available": 2, "total": 6 },
+      "computers": { "available": 8, "total": 15 },
+      "features": ["Printing", "Medical Databases", "Quiet Study"]
+    },
+    {
+      "id": "lib4",
+      "name": "e-Library",
+      "shortName": "e-Library",
+      "isMain": false,
+      "hours": "24/7 Online",
+      "status": "open",
+      "address": "Online Resources",
+      "floors": 0,
+      "studyRooms": { "available": 0, "total": 0 },
+      "computers": { "available": 0, "total": 0 },
+      "features": ["Databases", "E-Journals", "Digital Collections", "Research Guides"]
+    }
+  ],
+  "myAccount": {
+    "checkedOut": [
+      { "id": "b1", "title": "Introduction to Algorithms", "author": "Cormen et al.", "dueDate": "2026-03-15", "renewals": 1 },
+      { "id": "b2", "title": "Engineering Mechanics: Dynamics", "author": "Meriam & Kraige", "dueDate": "2026-03-22", "renewals": 0 }
+    ],
+    "holds": [
+      { "id": "b3", "title": "Clean Code", "author": "Robert C. Martin", "status": "Ready for pickup", "pickupLocation": "Parks Library" }
+    ],
+    "fines": 0.00,
+    "printBalance": 8.50
+  },
+  "quickLinks": [
+    { "id": "ql1", "label": "Reserve Study Room", "icon": "room" },
+    { "id": "ql2", "label": "Interlibrary Loan", "icon": "loan" },
+    { "id": "ql3", "label": "Research Guides", "icon": "guide" },
+    { "id": "ql4", "label": "Ask a Librarian", "icon": "help" }
+  ]
+}
