@@ -16,15 +16,15 @@ A modern Progressive Web App (PWA) built for ISU students, featuring real-time C
 
 ## Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| React 18 | UI framework |
-| Vite 5 | Build tool & dev server |
-| React Router 6 | Client-side routing |
-| Leaflet + React-Leaflet | Interactive maps |
-| vite-plugin-pwa | PWA & service worker |
-| AccuWeather API | Live weather data |
-| AmesRide / mycyride.com | Real CyRide bus data |
+| Technology              | Purpose                 |
+| ----------------------- | ----------------------- |
+| React 18                | UI framework            |
+| Vite 5                  | Build tool & dev server |
+| React Router 6          | Client-side routing     |
+| Leaflet + React-Leaflet | Interactive maps        |
+| vite-plugin-pwa         | PWA & service worker    |
+| AccuWeather API         | Live weather data       |
+| AmesRide / mycyride.com | Real CyRide bus data    |
 
 ## Prerequisites
 
@@ -50,13 +50,14 @@ npm run dev
 The app will be available at **http://localhost:5173/** (or the next available port).
 
 The dev server automatically proxies CyRide API requests:
+
 - `/cyride-api/*` → mycyride.com (vehicle positions)
 - `/amesride-api/*` → amesride.demerstech.com (routes, stops, shapes)
 
 ## Environment Variables
 
-| Variable | Description | Required |
-|---|---|---|
+| Variable               | Description                          | Required                     |
+| ---------------------- | ------------------------------------ | ---------------------------- |
 | `VITE_ACCUWEATHER_KEY` | AccuWeather API key for live weather | No (falls back to mock data) |
 
 ## Production Build
