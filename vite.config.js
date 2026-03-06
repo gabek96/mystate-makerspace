@@ -28,6 +28,16 @@ export default defineConfig({
     })
   ],
   base: './',
+  server: {
+    proxy: {
+      '/cyride-api': {
+        target: 'https://www.mycyride.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/cyride-api/, ''),
+        secure: true,
+      }
+    }
+  },
   build: {
     outDir: 'dist',
     sourcemap: false

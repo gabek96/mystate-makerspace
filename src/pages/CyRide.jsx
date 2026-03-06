@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { api } from '../services/api';
+import { cyrideService } from '../services/cyride';
 import AppHeader from '../components/layout/AppHeader';
 import './cyride.css';
 
@@ -10,6 +11,10 @@ const toY = lat => ((MAP.maxLat - lat) / (MAP.maxLat - MAP.minLat)) * 100;
 
 export default function CyRide() {
   const [data, setData] = useState(null);
+  const [routes, setRoutes] = useState([]);
+  const [isLive, setIsLive] = useState(false);
+  const simReady = useRef(false);
+  const routesRef = useRef([]);
   const [selectedRoute, setSelectedRoute] = useState(null);
   const [selectedStop, setSelectedStop] = useState(null);
   const [favRoutes, setFavRoutes] = useState(new Set());
@@ -18,22 +23,44 @@ export default function CyRide() {
   useEffect(() => {
     api.getCyRideFull().then(d => {
       setData(d);
+      setRoutes(d.routes);
+      routesRef.current = d.routes;
       setFavRoutes(new Set(d.favoriteRoutes));
       setFavStops(new Set(d.favoriteStops));
-      // default to first favorite route
       if (d.favoriteRoutes.length) setSelectedRoute(d.favoriteRoutes[0]);
+      // Initialize simulation and try live API
+      cyrideService.initSim(d.routes);
+      simReady.current = true;
+      cyrideService.tryConnect().then(live => setIsLive(live));
     });
   }, []);
 
-  const route = useMemo(() => data?.routes.find(r => r.id === selectedRoute), [data, selectedRoute]);
+  // Tick bus positions every 3s (live API) or 3s (simulation)
+  useEffect(() => {
+    if (!simReady.current) return;
+    let active = true;
+    const poll = async () => {
+      const updated = await cyrideService.tick(routesRef.current);
+      if (active) {
+        routesRef.current = updated;
+        setRoutes(updated);
+        setIsLive(cyrideService.isLive);
+      }
+    };
+    const id = setInterval(poll, 3000);
+    return () => { active = false; clearInterval(id); };
+  }, [routes.length > 0]);
+
+  const route = useMemo(() => routes.find(r => r.id === selectedRoute), [routes, selectedRoute]);
 
   const toggleFavRoute = id => setFavRoutes(s => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
   const toggleFavStop = id => setFavStops(s => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
   if (!data) return <div className="page-cyride"><AppHeader title="CyRide" showBack /><div className="loading-state">Loading...</div></div>;
 
-  const { routes, alerts } = data;
+  const { alerts } = data;
   const activeRoutes = routes.filter(r => r.status === 'active');
+  const totalBuses = activeRoutes.reduce((sum, r) => sum + r.vehicles.length, 0);
 
   return (
     <div className="page-cyride">
@@ -79,21 +106,32 @@ export default function CyRide() {
               </g>
             ))}
 
-            {/* Bus vehicle markers */}
+            {/* Bus vehicle markers — selected route */}
             {route?.vehicles.map(v => (
               <g key={v.id}>
-                <circle cx={toX(v.lng)} cy={toY(v.lat)} r="2.2" fill={route.color} stroke="white" strokeWidth="0.5" />
-                <text x={toX(v.lng)} y={toY(v.lat) + 0.8} textAnchor="middle" fontSize="1.8" fill="white" fontWeight="800">
+                <circle className="bus-dot" cx={toX(v.lng)} cy={toY(v.lat)} r="2.4" fill={route.color} stroke="white" strokeWidth="0.6" />
+                <text className="bus-label" x={toX(v.lng)} y={toY(v.lat) + 0.8} textAnchor="middle" fontSize="1.8" fill="white" fontWeight="800">
                   {route.number}
                 </text>
               </g>
             ))}
 
-            {/* "No route selected" all-route dots */}
-            {!route && activeRoutes.map(r => r.stops.slice(0, 1).map(s => (
-              <circle key={r.id} cx={toX(s.lng)} cy={toY(s.lat)} r="1.2" fill={r.color} opacity="0.6" />
+            {/* All buses across all routes when no specific route selected */}
+            {!route && activeRoutes.flatMap(r => r.vehicles.map(v => (
+              <g key={v.id}>
+                <circle className="bus-dot" cx={toX(v.lng)} cy={toY(v.lat)} r="1.8" fill={r.color} stroke="white" strokeWidth="0.4" />
+                <text className="bus-label" x={toX(v.lng)} y={toY(v.lat) + 0.6} textAnchor="middle" fontSize="1.4" fill="white" fontWeight="800">
+                  {r.number}
+                </text>
+              </g>
             )))}
           </svg>
+
+          {/* Live status indicator */}
+          <div className={`cyride-status-badge ${isLive ? 'is-live' : ''}`}>
+            <span className="csb-dot" />
+            {isLive ? 'Live' : 'Simulated'}
+          </div>
 
           {/* Map overlay label */}
           <div className="map-route-label">
@@ -105,7 +143,10 @@ export default function CyRide() {
                 {route.vehicles.length > 0 && <span className="mrl-buses">{route.vehicles.length} bus{route.vehicles.length > 1 ? 'es' : ''} active</span>}
               </>
             ) : (
-              <span className="mrl-name">Select a route</span>
+              <>
+                <span className="mrl-name">All Routes</span>
+                <span className="mrl-buses">{totalBuses} buses active</span>
+              </>
             )}
           </div>
         </div>
