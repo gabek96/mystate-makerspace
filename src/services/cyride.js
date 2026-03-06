@@ -1,37 +1,40 @@
 /**
  * CyRide real-time bus tracking service.
  *
- * Tries the live CyRide API (https://www.mycyride.com) first.
- * If CORS or network blocks it, falls back to a realistic simulation
- * that moves buses smoothly along their route paths.
+ * Fetches real route/stop/shape data from the AmesRide backend,
+ * and live vehicle positions from the CyRide API (via proxy).
+ * Falls back to simulation if APIs are unreachable.
  */
 
 const CYRIDE_API = 'https://www.mycyride.com';
+const AMESRIDE_API = 'https://amesride.demerstech.com';
 
 // In dev, Vite proxies /cyride-api/* → mycyride.com/*
-// In production, use the Express relay server URL from env, or fall back to direct
 const API_BASE = import.meta.env.DEV
   ? '/cyride-api'
   : (import.meta.env.VITE_CYRIDE_PROXY || CYRIDE_API);
 
-// Per-vehicle simulation state
+// In dev, Vite proxies /amesride-api/* → amesride.demerstech.com/*
+const AMESRIDE_BASE = import.meta.env.DEV
+  ? '/amesride-api'
+  : (import.meta.env.VITE_AMESRIDE_PROXY || AMESRIDE_API);
+
+const AMESRIDE_DATA = AMESRIDE_BASE + '/data?hash=NONE&os=web';
+
+// ── Simulation helpers ──
+
 const sim = new Map();
 
-function lerp(a, b, t) {
-  return a + (b - a) * t;
-}
+function lerp(a, b, t) { return a + (b - a) * t; }
 
-/** Initialize simulation state for all vehicles across all routes */
 function initSimulation(routes) {
   for (const route of routes) {
-    if (route.status !== 'active' || !route.stops.length) continue;
+    if (!route.stops.length) continue;
     for (let i = 0; i < route.vehicles.length; i++) {
       const v = route.vehicles[i];
       if (!sim.has(v.id)) {
-        // Distribute vehicles evenly along the route
-        const progress = (i / route.vehicles.length) * (route.stops.length - 1);
         sim.set(v.id, {
-          progress,
+          progress: (i / route.vehicles.length) * (route.stops.length - 1),
           speed: 0.06 + Math.random() * 0.06,
         });
       }
@@ -39,44 +42,31 @@ function initSimulation(routes) {
   }
 }
 
-/** Advance all vehicles one tick and return updated routes array */
 function tickSimulation(routes) {
   return routes.map(route => {
-    if (route.status !== 'active' || !route.stops.length || !route.vehicles.length) return route;
-
+    if (!route.stops.length || !route.vehicles.length) return route;
     const vehicles = route.vehicles.map(v => {
       const s = sim.get(v.id);
       if (!s) return v;
-
-      // Advance along route
       s.progress += s.speed;
       if (s.progress >= route.stops.length - 0.01) s.progress = 0;
-
-      // Add slight speed variation for realism
       s.speed += (Math.random() - 0.5) * 0.008;
       s.speed = Math.max(0.04, Math.min(0.12, s.speed));
-
-      // Interpolate position between surrounding stops
       const idx = Math.floor(s.progress);
       const frac = s.progress - idx;
       const from = route.stops[idx];
       const to = route.stops[Math.min(idx + 1, route.stops.length - 1)];
-
-      const lat = lerp(from.lat, to.lat, frac);
-      const lng = lerp(from.lng, to.lng, frac);
-      const heading = Math.atan2(to.lng - from.lng, to.lat - from.lat) * (180 / Math.PI);
-
-      return { ...v, lat, lng, heading, speed: Math.round(10 + Math.random() * 20) };
+      return { ...v, lat: lerp(from.lat, to.lat, frac), lng: lerp(from.lng, to.lng, frac), speed: Math.round(10 + Math.random() * 20) };
     });
-
     return { ...route, vehicles };
   });
 }
 
-/** Try to fetch from the real CyRide API */
+// ── Network helpers ──
+
 async function apiFetch(path) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 4000);
+  const timeout = setTimeout(() => controller.abort(), 6000);
   try {
     const res = await fetch(API_BASE + path, {
       headers: { Accept: 'application/json' },
@@ -91,17 +81,15 @@ async function apiFetch(path) {
   }
 }
 
-/** Transform real API vehicle data to our format */
-function transformVehicle(apiVehicle) {
+function transformVehicle(v) {
   return {
-    id: String(apiVehicle.ID ?? apiVehicle.VehicleId ?? apiVehicle.id),
-    name: apiVehicle.Name || '',
-    lat: apiVehicle.Latitude ?? apiVehicle.Coordinate?.Latitude ?? 0,
-    lng: apiVehicle.Longitude ?? apiVehicle.Coordinate?.Longitude ?? 0,
-    heading: parseHeading(apiVehicle.Heading),
-    speed: apiVehicle.Speed ?? 0,
-    occupancy: apiVehicle.APCPercentage ?? null,
-    updatedAgo: apiVehicle.UpdatedAgo || '',
+    id: String(v.ID ?? v.id),
+    name: v.Name || '',
+    lat: v.Latitude ?? v.Coordinate?.Latitude ?? 0,
+    lng: v.Longitude ?? v.Coordinate?.Longitude ?? 0,
+    heading: parseHeading(v.Heading),
+    speed: v.Speed ?? 0,
+    occupancy: v.APCPercentage ?? null,
   };
 }
 
@@ -111,17 +99,111 @@ function parseHeading(h) {
   return HEADING_MAP[h] ?? 0;
 }
 
+// ── Build route objects from AmesRide backend data ──
+
+function buildRoutesFromData(raw) {
+  const { routes: routeMap, stops: stopMap, trips: tripMap, shapes: shapeMap } = raw;
+  const built = [];
+
+  for (const [routeId, route] of Object.entries(routeMap)) {
+    if (!route.trips || !route.trips.length) continue;
+
+    // Pick the first trip to get stops and shape
+    const tripId = route.trips[0];
+    const trip = tripMap[tripId];
+    if (!trip) continue;
+
+    // Build stop list with real coordinates
+    const stops = (trip.stops || [])
+      .map(sid => stopMap[sid])
+      .filter(Boolean)
+      .map(s => ({
+        id: s.stop_id,
+        name: s.stop_name,
+        lat: parseFloat(s.stop_lat),
+        lng: parseFloat(s.stop_lon),
+      }));
+
+    // Build shape polyline
+    const shapePoints = (shapeMap[trip.shape_id] || [])
+      .sort((a, b) => a.shape_pt_sequence - b.shape_pt_sequence)
+      .map(p => [p.latitude, p.longitude]);
+
+    built.push({
+      id: routeId,
+      number: route.route_short_name,
+      name: route.route_long_name,
+      color: '#' + (route.route_color || '666666'),
+      stops,
+      shape: shapePoints,
+      vehicles: [],
+      apiRouteId: parseInt(routeId, 10),
+    });
+  }
+
+  // Sort by route number
+  built.sort((a, b) => {
+    const na = parseInt(a.number) || 999;
+    const nb = parseInt(b.number) || 999;
+    return na - nb || a.name.localeCompare(b.name);
+  });
+
+  return built;
+}
+
+// ── Exported service ──
+
 export const cyrideService = {
   _isLive: false,
-  _apiRoutes: [],   // real CyRide route objects from API
+  _hasRealData: false,
 
   get isLive() { return this._isLive; },
+  get hasRealData() { return this._hasRealData; },
 
-  /** Attempt to connect to the real CyRide API and fetch route list */
+  /**
+   * Fetch real route/stop/shape data from the AmesRide backend.
+   * Also fetches waypoints from mycyride.com for polylines.
+   * Returns array of route objects, or null on failure.
+   */
+  async fetchRealRoutes() {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+      const res = await fetch(AMESRIDE_DATA, {
+        headers: { Accept: 'application/json' },
+        signal: controller.signal,
+      });
+      clearTimeout(timeout);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      const routes = buildRoutesFromData(json.data);
+      this._hasRealData = routes.length > 0;
+
+      // Fetch waypoints from mycyride.com for routes that are missing shapes
+      if (routes.length > 0) {
+        await Promise.allSettled(routes.map(async route => {
+          if (route.shape.length > 0) return; // AmesRide shape already available
+          try {
+            const waypoints = await apiFetch(`/Route/${route.apiRouteId}/Waypoints`);
+            if (Array.isArray(waypoints) && waypoints.length > 0) {
+              const poly = Array.isArray(waypoints[0]) ? waypoints[0] : waypoints;
+              route.shape = poly.map(p => [p.Latitude, p.Longitude]);
+            }
+          } catch { /* ignore */ }
+        }));
+      }
+
+      return routes;
+    } catch {
+      this._hasRealData = false;
+      return null;
+    }
+  },
+
+  /** Try connecting to the live vehicle position API */
   async tryConnect() {
     try {
-      const routes = await apiFetch('/Region/0/Routes');
-      this._apiRoutes = Array.isArray(routes) ? routes : [];
+      await apiFetch('/Region/0/Routes');
       this._isLive = true;
       return true;
     } catch {
@@ -130,23 +212,14 @@ export const cyrideService = {
     }
   },
 
-  /** Find the real API route ID that best matches a mock route number */
-  _matchApiRoute(mockNumber) {
-    return this._apiRoutes.find(r =>
-      r.ShortName === mockNumber || r.Name?.startsWith(mockNumber + ' ')
-    );
-  },
-
-  /** Fetch real vehicle positions for all active routes and merge into local state */
+  /** Fetch live vehicle positions for all routes */
   async fetchAllLiveVehicles(routes) {
     if (!this._isLive) return null;
     try {
       const updated = await Promise.all(routes.map(async route => {
-        if (route.status !== 'active') return route;
-        const apiRoute = this._matchApiRoute(route.number);
-        if (!apiRoute) return route;
+        if (!route.apiRouteId) return route;
         try {
-          const data = await apiFetch(`/Route/${encodeURIComponent(apiRoute.ID)}/Vehicles`);
+          const data = await apiFetch(`/Route/${route.apiRouteId}/Vehicles`);
           const vehicles = Array.isArray(data) ? data.map(transformVehicle) : route.vehicles;
           return { ...route, vehicles };
         } catch {
@@ -160,17 +233,12 @@ export const cyrideService = {
     }
   },
 
-  /** Initialize simulation from mock route data */
-  initSim(routes) {
-    initSimulation(routes);
-  },
+  initSim(routes) { initSimulation(routes); },
 
-  /** Tick: if live, fetch real data; otherwise advance simulation */
   async tick(routes) {
     if (this._isLive) {
       const live = await this.fetchAllLiveVehicles(routes);
       if (live) return live;
-      // fell through — API failed, fall back to sim
     }
     return tickSimulation(routes);
   },

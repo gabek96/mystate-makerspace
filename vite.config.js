@@ -35,6 +35,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: path => path.replace(/^\/cyride-api/, ''),
         secure: true,
+      },
+      '/amesride-api': {
+        target: 'https://amesride.demerstech.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/amesride-api/, ''),
+        secure: true,
       }
     }
   },

@@ -19,10 +19,11 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 3001;
 const CYRIDE_TARGET = 'https://www.mycyride.com';
+const AMESRIDE_TARGET = 'https://amesride.demerstech.com';
 
 app.use(cors({ origin: true }));
 
-// Only proxy requests under /cyride-api/*
+// Proxy requests under /cyride-api/* → mycyride.com
 app.get('/cyride-api/*', async (req, res) => {
   const apiPath = req.path.replace(/^\/cyride-api/, '');
 
@@ -49,6 +50,36 @@ app.get('/cyride-api/*', async (req, res) => {
     res.json(data);
   } catch (err) {
     res.status(502).json({ error: 'Failed to reach CyRide API' });
+  }
+});
+
+// Proxy requests under /amesride-api/* → amesride.demerstech.com
+app.get('/amesride-api/*', async (req, res) => {
+  const apiPath = req.path.replace(/^\/amesride-api/, '');
+
+  // Validate the path to prevent SSRF — only allow data endpoint
+  if (!/^\/data(\?[a-zA-Z0-9=&_-]*)?$/.test(apiPath)) {
+    return res.status(400).json({ error: 'Invalid path' });
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+
+    const upstream = await fetch(AMESRIDE_TARGET + apiPath, {
+      headers: { Accept: 'application/json' },
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+
+    if (!upstream.ok) {
+      return res.status(upstream.status).json({ error: `Upstream ${upstream.status}` });
+    }
+
+    const data = await upstream.json();
+    res.json(data);
+  } catch (err) {
+    res.status(502).json({ error: 'Failed to reach AmesRide API' });
   }
 });
 

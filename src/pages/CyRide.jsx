@@ -1,13 +1,42 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
+import { MapContainer, TileLayer, Polyline, CircleMarker, Marker, Popup, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { api } from '../services/api';
 import { cyrideService } from '../services/cyride';
 import AppHeader from '../components/layout/AppHeader';
 import './cyride.css';
 
-/* SVG map bounds for Ames area */
-const MAP = { minLat: 42.001, maxLat: 42.055, minLng: -93.675, maxLng: -93.598 };
-const toX = lng => ((lng - MAP.minLng) / (MAP.maxLng - MAP.minLng)) * 100;
-const toY = lat => ((MAP.maxLat - lat) / (MAP.maxLat - MAP.minLat)) * 100;
+/* Ames, IA center */
+const AMES_CENTER = [42.026, -93.646];
+const DEFAULT_ZOOM = 14;
+
+/** Build a colored circle DivIcon for bus markers */
+function busIcon(color, label) {
+  return L.divIcon({
+    className: 'bus-marker',
+    html: `<div class="bus-marker-inner" style="background:${color}"><span>${label}</span></div>`,
+    iconSize: [28, 28],
+    iconAnchor: [14, 14],
+  });
+}
+
+/** Recenter map when selected route changes */
+function FitRoute({ route, allRoutes }) {
+  const map = useMap();
+  useEffect(() => {
+    if (route && route.stops.length) {
+      const bounds = L.latLngBounds(route.stops.map(s => [s.lat, s.lng]));
+      map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
+    } else if (allRoutes.length) {
+      const allStops = allRoutes.flatMap(r => r.stops.map(s => [s.lat, s.lng]));
+      if (allStops.length) {
+        map.fitBounds(L.latLngBounds(allStops), { padding: [30, 30], maxZoom: 14 });
+      }
+    }
+  }, [route?.id]);
+  return null;
+}
 
 export default function CyRide() {
   const [data, setData] = useState(null);
@@ -21,18 +50,33 @@ export default function CyRide() {
   const [favStops, setFavStops] = useState(new Set());
 
   useEffect(() => {
-    api.getCyRideFull().then(d => {
-      setData(d);
-      setRoutes(d.routes);
-      routesRef.current = d.routes;
-      setFavRoutes(new Set(d.favoriteRoutes));
-      setFavStops(new Set(d.favoriteStops));
-      if (d.favoriteRoutes.length) setSelectedRoute(d.favoriteRoutes[0]);
-      // Initialize simulation and try live API
-      cyrideService.initSim(d.routes);
+    async function loadData() {
+      // Try fetching real route/stop/shape data
+      const realRoutes = await cyrideService.fetchRealRoutes();
+      const mockData = await api.getCyRideFull();
+      setData(mockData);
+      setFavRoutes(new Set(mockData.favoriteRoutes));
+      setFavStops(new Set(mockData.favoriteStops));
+
+      const initialRoutes = realRoutes || mockData.routes;
+      setRoutes(initialRoutes);
+      routesRef.current = initialRoutes;
+
+      // Try live vehicle positions
+      const live = await cyrideService.tryConnect();
+      setIsLive(live);
+
+      if (live) {
+        // Immediately fetch live vehicles
+        const updated = await cyrideService.tick(initialRoutes);
+        setRoutes(updated);
+        routesRef.current = updated;
+      } else {
+        cyrideService.initSim(initialRoutes);
+      }
       simReady.current = true;
-      cyrideService.tryConnect().then(live => setIsLive(live));
-    });
+    }
+    loadData();
   }, []);
 
   // Tick bus positions every 3s (live API) or 3s (simulation)
@@ -58,9 +102,8 @@ export default function CyRide() {
 
   if (!data) return <div className="page-cyride"><AppHeader title="CyRide" showBack /><div className="loading-state">Loading...</div></div>;
 
-  const { alerts } = data;
-  const activeRoutes = routes.filter(r => r.status === 'active');
-  const totalBuses = activeRoutes.reduce((sum, r) => sum + r.vehicles.length, 0);
+  const alerts = data?.alerts || [];
+  const totalBuses = routes.reduce((sum, r) => sum + r.vehicles.length, 0);
 
   return (
     <div className="page-cyride">
@@ -69,63 +112,50 @@ export default function CyRide() {
       <div className="cyride-layout">
         {/* === MAP AREA === */}
         <div className="cyride-map-container">
-          <svg className="cyride-map" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-            {/* Grid */}
-            <defs>
-              <pattern id="mapGrid" width="5" height="5" patternUnits="userSpaceOnUse">
-                <path d="M 5 0 L 0 0 0 5" fill="none" stroke="var(--map-grid)" strokeWidth="0.15"/>
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="var(--map-bg)" />
-            <rect width="100" height="100" fill="url(#mapGrid)" />
+          <MapContainer center={AMES_CENTER} zoom={DEFAULT_ZOOM} className="cyride-map" zoomControl={false} attributionControl={false}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <FitRoute route={route} allRoutes={routes} />
 
-            {/* Road hints */}
-            <line x1="0" y1={toY(42.0219)} x2="100" y2={toY(42.0219)} stroke="var(--map-road)" strokeWidth="0.6" />
-            <line x1={toX(-93.6465)} y1="0" x2={toX(-93.6465)} y2="100" stroke="var(--map-road)" strokeWidth="0.6" />
-
-            {/* Route path polyline */}
+            {/* Route polyline — use shape (real waypoints) if available, else connect stops */}
             {route && (
-              <polyline
-                points={route.stops.map(s => `${toX(s.lng)},${toY(s.lat)}`).join(' ')}
-                fill="none"
-                stroke={route.color}
-                strokeWidth="0.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                opacity="0.6"
+              <Polyline
+                positions={route.shape?.length ? route.shape : route.stops.map(s => [s.lat, s.lng])}
+                pathOptions={{ color: route.color, weight: 4, opacity: 0.7 }}
               />
             )}
 
-            {/* All stops for selected route (small dots when no route selected show all) */}
+            {/* When no route selected, show all route polylines faintly */}
+            {!route && routes.map(r => (
+              <Polyline
+                key={r.id}
+                positions={r.shape?.length ? r.shape : r.stops.map(s => [s.lat, s.lng])}
+                pathOptions={{ color: r.color, weight: 3, opacity: 0.35 }}
+              />
+            ))}
+
+            {/* Stops for selected route */}
             {(route ? route.stops : []).map(stop => (
-              <g key={stop.id} onClick={() => setSelectedStop(selectedStop?.id === stop.id ? null : stop)} style={{ cursor: 'pointer' }}>
-                <circle cx={toX(stop.lng)} cy={toY(stop.lat)} r={selectedStop?.id === stop.id ? 2 : 1.3} fill="white" stroke={route?.color || '#666'} strokeWidth="0.5" />
-                {selectedStop?.id === stop.id && (
-                  <text x={toX(stop.lng)} y={toY(stop.lat) - 3} textAnchor="middle" fontSize="2.2" fill="var(--text-primary)" fontWeight="700">{stop.name}</text>
-                )}
-              </g>
+              <CircleMarker
+                key={stop.id}
+                center={[stop.lat, stop.lng]}
+                radius={selectedStop?.id === stop.id ? 8 : 5}
+                pathOptions={{ fillColor: 'white', color: route?.color || '#666', weight: 2, fillOpacity: 1 }}
+                eventHandlers={{ click: () => setSelectedStop(selectedStop?.id === stop.id ? null : stop) }}
+              >
+                <Popup>{stop.name}</Popup>
+              </CircleMarker>
             ))}
 
-            {/* Bus vehicle markers — selected route */}
+            {/* Bus markers — selected route */}
             {route?.vehicles.map(v => (
-              <g key={v.id}>
-                <circle className="bus-dot" cx={toX(v.lng)} cy={toY(v.lat)} r="2.4" fill={route.color} stroke="white" strokeWidth="0.6" />
-                <text className="bus-label" x={toX(v.lng)} y={toY(v.lat) + 0.8} textAnchor="middle" fontSize="1.8" fill="white" fontWeight="800">
-                  {route.number}
-                </text>
-              </g>
+              <Marker key={v.id} position={[v.lat, v.lng]} icon={busIcon(route.color, route.number)} />
             ))}
 
-            {/* All buses across all routes when no specific route selected */}
-            {!route && activeRoutes.flatMap(r => r.vehicles.map(v => (
-              <g key={v.id}>
-                <circle className="bus-dot" cx={toX(v.lng)} cy={toY(v.lat)} r="1.8" fill={r.color} stroke="white" strokeWidth="0.4" />
-                <text className="bus-label" x={toX(v.lng)} y={toY(v.lat) + 0.6} textAnchor="middle" fontSize="1.4" fill="white" fontWeight="800">
-                  {r.number}
-                </text>
-              </g>
+            {/* Bus markers — all routes (when none selected) */}
+            {!route && routes.flatMap(r => r.vehicles.map(v => (
+              <Marker key={v.id} position={[v.lat, v.lng]} icon={busIcon(r.color, r.number)} />
             )))}
-          </svg>
+          </MapContainer>
 
           {/* Live status indicator */}
           <div className={`cyride-status-badge ${isLive ? 'is-live' : ''}`}>
@@ -139,7 +169,7 @@ export default function CyRide() {
               <>
                 <span className="mrl-dot" style={{ background: route.color }} />
                 <span className="mrl-name">{route.number} {route.name}</span>
-                <span className="mrl-freq">Every {route.frequency}</span>
+                <span className="mrl-freq">{route.stops.length} stops</span>
                 {route.vehicles.length > 0 && <span className="mrl-buses">{route.vehicles.length} bus{route.vehicles.length > 1 ? 'es' : ''} active</span>}
               </>
             ) : (
@@ -159,7 +189,7 @@ export default function CyRide() {
               All
             </button>
             {/* Favorite routes first, then rest */}
-            {[...activeRoutes.filter(r => favRoutes.has(r.id)), ...activeRoutes.filter(r => !favRoutes.has(r.id))].map(r => (
+            {[...routes.filter(r => favRoutes.has(r.id)), ...routes.filter(r => !favRoutes.has(r.id))].map(r => (
               <button
                 key={r.id}
                 className={`rsb-pill ${selectedRoute === r.id ? 'active' : ''}`}
@@ -167,7 +197,7 @@ export default function CyRide() {
                 style={selectedRoute === r.id ? { background: r.color, borderColor: r.color } : {}}
               >
                 <span className="rsb-dot" style={{ background: r.color }} />
-                {r.number} {r.name.split(' ')[0]}
+                {r.number} {r.name.replace(/^\d+\s*/, '').split(' ')[0]}
                 {favRoutes.has(r.id) && <svg className="rsb-star" width="10" height="10" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>}
               </button>
             ))}
@@ -206,9 +236,17 @@ export default function CyRide() {
               </div>
             </div>
             <div className="ss-arrivals">
-              <div className="ss-arrivals-title">Upcoming Arrivals</div>
-              {selectedStop.arrivals.length > 0 ? (
-                selectedStop.arrivals.map((time, i) => {
+              <div className="ss-arrivals-title">Stop Info</div>
+              <div className="ss-arrival-row">
+                <div className="ss-ar-left">
+                  <span className="ss-ar-dot" style={{ background: route?.color || '#666' }} />
+                  <span className="ss-ar-route">{route?.number} {route?.name}</span>
+                </div>
+              </div>
+              {!(selectedStop.arrivals?.length > 0) && (
+                <div className="ss-no-arrivals">No upcoming arrivals.</div>
+              )}
+              {(selectedStop.arrivals || []).map((time, i) => {
                   const mins = i === 0 ? Math.floor(Math.random() * 4) + 1 : i === 1 ? Math.floor(Math.random() * 8) + 8 : Math.floor(Math.random() * 10) + 18;
                   return (
                     <div className="ss-arrival-row" key={i}>
@@ -222,10 +260,7 @@ export default function CyRide() {
                       </div>
                     </div>
                   );
-                })
-              ) : (
-                <div className="ss-no-arrivals">No upcoming arrivals.</div>
-              )}
+              })}
             </div>
           </div>
         )}
@@ -247,7 +282,7 @@ export default function CyRide() {
                 </div>
                 <div className="csl-info">
                   <div className="csl-name">{stop.name}</div>
-                  {stop.arrivals[0] && <div className="csl-next">Next: {stop.arrivals[0]}</div>}
+                  {stop.arrivals?.[0] && <div className="csl-next">Next: {stop.arrivals[0]}</div>}
                 </div>
                 {favStops.has(stop.id) && <svg className="csl-star" width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text-tertiary)"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
@@ -260,12 +295,12 @@ export default function CyRide() {
         {!selectedRoute && (
           <div className="cyride-all-routes">
             <div className="car-section-label">All Routes</div>
-            {activeRoutes.map(r => (
+            {routes.map(r => (
               <button className="car-route" key={r.id} onClick={() => { setSelectedRoute(r.id); setSelectedStop(null); }}>
                 <div className="car-badge" style={{ background: r.color }}>{r.number}</div>
                 <div className="car-info">
                   <div className="car-name">{r.name}</div>
-                  <div className="car-freq">Every {r.frequency} · {r.stops.length} stops</div>
+                  <div className="car-freq">{r.stops.length} stops</div>
                 </div>
                 <div className="car-vehicle-count">
                   {r.vehicles.length > 0 ? (
@@ -277,21 +312,6 @@ export default function CyRide() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text-tertiary)"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
               </button>
             ))}
-
-            {routes.filter(r => r.status === 'inactive').length > 0 && (
-              <>
-                <div className="car-section-label" style={{ marginTop: 'var(--space-md)' }}>Inactive</div>
-                {routes.filter(r => r.status === 'inactive').map(r => (
-                  <div className="car-route car-route-inactive" key={r.id}>
-                    <div className="car-badge" style={{ background: r.color, opacity: 0.4 }}>{r.number}</div>
-                    <div className="car-info">
-                      <div className="car-name" style={{ opacity: 0.5 }}>{r.name}</div>
-                      <div className="car-freq" style={{ opacity: 0.4 }}>Service suspended</div>
-                    </div>
-                  </div>
-                ))}
-              </>
-            )}
           </div>
         )}
       </div>
