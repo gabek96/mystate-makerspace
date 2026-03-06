@@ -23,19 +23,24 @@ export default function Home() {
   const [loaded, setLoaded] = useState(false);
 
   const loadData = async () => {
-    const [w, c, cr, d, m] = await Promise.all([
-      api.getWeather(),
-      api.getClasses(),
-      api.getCyRide(),
-      api.getDining(),
-      api.getMakerspaceSummary()
-    ]);
-    setWeather(w);
-    setClasses(c);
-    setCyride(cr);
-    setDining(d);
-    setMakerspace(m);
-    setLoaded(true);
+    try {
+      const [w, c, cr, d, m] = await Promise.all([
+        api.getWeather(),
+        api.getClasses(),
+        api.getCyRide(),
+        api.getDining(),
+        api.getMakerspaceSummary()
+      ]);
+      setWeather(w);
+      setClasses(c);
+      setCyride(cr);
+      setDining(d);
+      setMakerspace(m);
+    } catch (err) {
+      console.error('Failed to load home data:', err);
+    } finally {
+      setLoaded(true);
+    }
   };
 
   useEffect(() => { loadData(); }, []);

@@ -41,7 +41,7 @@ export const api = {
 
   async getCyRide() {
     await delay(200);
-    return clone(cyrideData.nearby);
+    return clone(cyrideData.routes);
   },
 
   async getCyRideFull() {

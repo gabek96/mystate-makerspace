@@ -2,35 +2,35 @@
    Theme System — Dark + Light
    ============================================ */
 
-/* Dark Theme (default) */
+/* Dark Theme (default) — ISU Cardinal & Gold */
 [data-theme="dark"] {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #131318;
-  --bg-card: #1a1a22;
-  --bg-card-hover: #22222c;
-  --bg-elevated: #252530;
-  --bg-header: rgba(10, 10, 15, 0.92);
-  --bg-nav: rgba(13, 13, 18, 0.95);
-  --bg-input: #1e1e28;
-  --bg-chip: #2a2a35;
-  --bg-badge: rgba(200, 16, 46, 0.15);
+  --bg-primary: #1a1018;
+  --bg-secondary: #231a22;
+  --bg-card: #2c2029;
+  --bg-card-hover: #362a34;
+  --bg-elevated: #3a2e38;
+  --bg-header: rgba(140, 12, 32, 0.94);
+  --bg-nav: rgba(26, 16, 24, 0.96);
+  --bg-input: #2c2029;
+  --bg-chip: #3a2e38;
+  --bg-badge: rgba(200, 16, 46, 0.2);
 
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  --text-tertiary: #666680;
-  --text-inverse: #0a0a0f;
+  --text-primary: #faf5f0;
+  --text-secondary: #c0a8b8;
+  --text-tertiary: #8a7080;
+  --text-inverse: #1a1018;
 
-  --border-primary: #2a2a35;
-  --border-secondary: #1e1e28;
-  --border-focus: var(--cardinal);
+  --border-primary: #3e2e3a;
+  --border-secondary: #2c2029;
+  --border-focus: var(--gold);
 
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
-  --shadow-glow: 0 0 20px rgba(200, 16, 46, 0.15);
+  --shadow-glow: 0 0 20px rgba(200, 16, 46, 0.2);
 
   --overlay: rgba(0, 0, 0, 0.6);
-  --skeleton: linear-gradient(90deg, #1a1a22 25%, #252530 50%, #1a1a22 75%);
+  --skeleton: linear-gradient(90deg, #2c2029 25%, #3a2e38 50%, #2c2029 75%);
 }
 
 /* Light Theme */
