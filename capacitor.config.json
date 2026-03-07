@@ -1,0 +1,16 @@
+{
+  "appId": "com.mystate.app",
+  "appName": "MyState",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": [
+      "*.mycyride.com",
+      "*.demerstech.com",
+      "*.accuweather.com"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
