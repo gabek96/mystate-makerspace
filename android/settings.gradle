@@ -2,4 +2,5 @@ include ':app'
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')
 
-apply from: 'capacitor.settings.gradle'
+apply from: 'capacitor.settings.gradle' powershell
+Add - Content android / app / build.gradle "`n`ndependencies {`n    constraints {`n        implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0') { because('merged') }`n        implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0') { because('merged') }`n    }`n}"
