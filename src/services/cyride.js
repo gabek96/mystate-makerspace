@@ -236,4 +236,64 @@ export const cyrideService = {
     }
     return tickSimulation(routes);
   },
+
+  /**
+   * Fetch direction-based stops from mycyride.com for a route.
+   * Returns array of { id, name, lat, lng, rtpiNumber } or null.
+   */
+  async fetchDirectionStops(apiRouteId) {
+    try {
+      const data = await apiFetch(`/Route/${apiRouteId}/Directions/`);
+      if (!Array.isArray(data)) return null;
+      const stops = [];
+      const seen = new Set();
+      for (const dir of data) {
+        for (const s of (dir.Stops || [])) {
+          if (!seen.has(s.ID)) {
+            seen.add(s.ID);
+            stops.push({
+              id: String(s.ID),
+              name: s.Name,
+              lat: s.Latitude,
+              lng: s.Longitude,
+              rtpiNumber: s.RtpiNumber || 0,
+            });
+          }
+        }
+      }
+      return stops;
+    } catch {
+      return null;
+    }
+  },
+
+  /**
+   * Fetch real-time arrival predictions for a stop.
+   * customerID 187 = CyRide Ames.
+   * Returns array of { routeName, vehicleName, arriveTime, minutes, secondsToArrival }.
+   */
+  async fetchStopArrivals(stopId) {
+    try {
+      const data = await apiFetch(`/Stop/${stopId}/Arrivals?customerID=187`);
+      if (!Array.isArray(data)) return [];
+      const arrivals = [];
+      for (const group of data) {
+        for (const a of (group.Arrivals || [])) {
+          arrivals.push({
+            routeName: a.RouteName || '',
+            routeId: a.RouteID,
+            vehicleName: a.VehicleName || a.BusName || '',
+            arriveTime: a.ArriveTime || '',
+            minutes: a.Minutes ?? Math.round((a.SecondsToArrival || 0) / 60),
+            secondsToArrival: a.SecondsToArrival || 0,
+            isScheduled: a.SchedulePrediction || false,
+          });
+        }
+      }
+      arrivals.sort((a, b) => a.secondsToArrival - b.secondsToArrival);
+      return arrivals;
+    } catch {
+      return [];
+    }
+  },
 };

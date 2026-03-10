@@ -209,8 +209,10 @@
 .ss-ar-right { text-align: right; }
 .ss-ar-time { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); display: block; }
 .ss-ar-eta { font-size: 11px; color: var(--text-secondary); }
+.ss-ar-bus { font-size: 11px; color: var(--text-tertiary); }
 
 .ss-no-arrivals { font-size: var(--text-sm); color: var(--text-tertiary); padding: var(--space-md) 0; }
+.ss-loading { font-size: var(--text-sm); color: var(--text-tertiary); padding: var(--space-md) 0; }
 
 /* === STOP LIST === */
 .cyride-stop-list { padding: 0 var(--space-md) var(--space-xl); }

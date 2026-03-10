@@ -49,6 +49,12 @@ export default function CyRide() {
   const [favRoutes, setFavRoutes] = useState(new Set());
   const [favStops, setFavStops] = useState(new Set());
 
+  // Arrival state
+  const [arrivals, setArrivals] = useState([]);
+  const [arrivalsLoading, setArrivalsLoading] = useState(false);
+  // Map of apiRouteId -> mycyride direction stops (for stop ID lookup)
+  const dirStopsCache = useRef({});
+
   useEffect(() => {
     async function loadData() {
       // Try fetching real route/stop/shape data
@@ -96,6 +102,53 @@ export default function CyRide() {
   }, [routes.length > 0]);
 
   const route = useMemo(() => routes.find(r => r.id === selectedRoute), [routes, selectedRoute]);
+
+  // Fetch mycyride direction stops when a route is selected (for stop ID mapping)
+  useEffect(() => {
+    if (!route?.apiRouteId || dirStopsCache.current[route.apiRouteId]) return;
+    cyrideService.fetchDirectionStops(route.apiRouteId).then(stops => {
+      if (stops) dirStopsCache.current[route.apiRouteId] = stops;
+    });
+  }, [route?.apiRouteId]);
+
+  // Find the mycyride stop ID that matches the selected AmesRide stop (by proximity)
+  const findMycyrideStopId = (stop, apiRouteId) => {
+    const dirStops = dirStopsCache.current[apiRouteId];
+    if (!dirStops || !stop) return null;
+    let best = null, bestDist = Infinity;
+    for (const ds of dirStops) {
+      const d = Math.abs(ds.lat - stop.lat) + Math.abs(ds.lng - stop.lng);
+      if (d < bestDist) { bestDist = d; best = ds; }
+    }
+    return bestDist < 0.002 ? best?.id : null; // ~200m threshold
+  };
+
+  // Fetch arrivals when a stop is selected
+  useEffect(() => {
+    if (!selectedStop || !route?.apiRouteId) { setArrivals([]); return; }
+    let active = true;
+
+    const load = async () => {
+      setArrivalsLoading(true);
+      // Ensure direction stops are loaded
+      if (!dirStopsCache.current[route.apiRouteId]) {
+        const ds = await cyrideService.fetchDirectionStops(route.apiRouteId);
+        if (ds) dirStopsCache.current[route.apiRouteId] = ds;
+      }
+      const mycyrideStopId = findMycyrideStopId(selectedStop, route.apiRouteId);
+      if (mycyrideStopId && active) {
+        const arr = await cyrideService.fetchStopArrivals(mycyrideStopId);
+        if (active) setArrivals(arr);
+      } else if (active) {
+        setArrivals([]);
+      }
+      if (active) setArrivalsLoading(false);
+    };
+
+    load();
+    const id = setInterval(load, 15000);
+    return () => { active = false; clearInterval(id); };
+  }, [selectedStop?.id, route?.apiRouteId]);
 
   const toggleFavRoute = id => setFavRoutes(s => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
   const toggleFavStop = id => setFavStops(s => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
@@ -236,31 +289,26 @@ export default function CyRide() {
               </div>
             </div>
             <div className="ss-arrivals">
-              <div className="ss-arrivals-title">Stop Info</div>
-              <div className="ss-arrival-row">
-                <div className="ss-ar-left">
-                  <span className="ss-ar-dot" style={{ background: route?.color || '#666' }} />
-                  <span className="ss-ar-route">{route?.number} {route?.name}</span>
-                </div>
-              </div>
-              {!(selectedStop.arrivals?.length > 0) && (
+              <div className="ss-arrivals-title">Upcoming Arrivals</div>
+              {arrivalsLoading && arrivals.length === 0 && (
+                <div className="ss-loading">Loading arrivals…</div>
+              )}
+              {!arrivalsLoading && arrivals.length === 0 && (
                 <div className="ss-no-arrivals">No upcoming arrivals.</div>
               )}
-              {(selectedStop.arrivals || []).map((time, i) => {
-                  const mins = i === 0 ? Math.floor(Math.random() * 4) + 1 : i === 1 ? Math.floor(Math.random() * 8) + 8 : Math.floor(Math.random() * 10) + 18;
-                  return (
-                    <div className="ss-arrival-row" key={i}>
-                      <div className="ss-ar-left">
-                        <span className="ss-ar-dot" style={{ background: route?.color || '#666' }} />
-                        <span className="ss-ar-route">{route?.number} {route?.name}</span>
-                      </div>
-                      <div className="ss-ar-right">
-                        <span className="ss-ar-time">{time}</span>
-                        <span className="ss-ar-eta">{mins === 1 ? 'arriving' : `${mins} min`}</span>
-                      </div>
-                    </div>
-                  );
-              })}
+              {arrivals.map((a, i) => (
+                <div className="ss-arrival-row" key={i}>
+                  <div className="ss-ar-left">
+                    <span className="ss-ar-dot" style={{ background: route?.color || '#666' }} />
+                    <span className="ss-ar-route">{a.routeName}</span>
+                    {a.vehicleName && <span className="ss-ar-bus">Bus {a.vehicleName}</span>}
+                  </div>
+                  <div className="ss-ar-right">
+                    <span className="ss-ar-time">{a.arriveTime}</span>
+                    <span className="ss-ar-eta">{a.minutes <= 1 ? 'Arriving' : `${a.minutes} min`}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
