@@ -9,15 +9,9 @@
 const CYRIDE_API = 'https://www.mycyride.com';
 const AMESRIDE_API = 'https://amesride.demerstech.com';
 
-// In dev, Vite proxies /cyride-api/* → mycyride.com/*
-const API_BASE = import.meta.env.DEV
-  ? '/cyride-api'
-  : (import.meta.env.VITE_CYRIDE_PROXY || CYRIDE_API);
-
-// In dev, Vite proxies /amesride-api/* → amesride.demerstech.com/*
-const AMESRIDE_BASE = import.meta.env.DEV
-  ? '/amesride-api'
-  : (import.meta.env.VITE_AMESRIDE_PROXY || AMESRIDE_API);
+// Use proxy paths in both dev (Vite proxy) and production (Netlify proxy)
+const API_BASE = '/cyride-api';
+const AMESRIDE_BASE = '/amesride-api';
 
 const AMESRIDE_DATA = AMESRIDE_BASE + '/data?hash=NONE&os=web';
 

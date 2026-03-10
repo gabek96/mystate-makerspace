@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy CyRide vehicle API (mycyride.com) to avoid CORS
+[[redirects]]
+  from = "/cyride-api/*"
+  to = "https://www.mycyride.com/:splat"
+  status = 200
+  force = true
+
+# Proxy AmesRide backend (routes, stops, shapes) to avoid CORS
+[[redirects]]
+  from = "/amesride-api/*"
+  to = "https://amesride.demerstech.com/:splat"
+  status = 200
+  force = true
+
+# SPA fallback — all other routes go to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
